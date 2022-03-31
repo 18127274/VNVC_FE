@@ -145,6 +145,23 @@ router.get('/login_ncc', function (req, res, next) {
 });
 
 
+router.get('/dangkytiem', function (req, res, next) {
+  res.render('', {layout: 'customer'}) 
+});
+
+router.get('/datmuavacxin', function (req, res, next) {
+  res.render('', {layout: 'customer'}) 
+});
+
+router.get('/xemgoitiem', function (req, res, next) {
+  res.render('', {layout: 'customer'}) 
+});
+
+router.get('/tuvan', function (req, res, next) {
+  res.render('', {layout: 'customer'}) 
+});
+
+
 
 
 

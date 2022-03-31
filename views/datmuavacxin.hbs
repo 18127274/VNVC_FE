@@ -1,0 +1,289 @@
+<script src="../javascripts/api.js"></script>
+<script type="text/javascript" src="../javascripts/booking.js"> </script>
+<script type="text/javascript" src="../javascripts/cart.js"> </script>
+<script type="text/javascript" src="../javascripts/nc_service.js"> </script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/stylebutton.css" />
+<img class="card-img" src="/Header.png" alt="..." />
+
+<!--introservice-->
+<!--<header class="py-5 bg-light border-bottom mb-4">
+            <div class="container">
+                <div class="text-center my-4">
+                    <h1 class="fw-bolder">Chào mừng bạn đến Đi Chợ Thuê</h1>
+                    <img class="card-img" src="/Header.png" alt="..." />
+                </div>
+            </div>
+</header>-->
+<!-- Page content-->
+<div class="bg-white">
+	<div class="container py-5">
+
+		<div class="row">
+			<!-- Side widgets-->
+			<div class="col-lg-4">
+				<!-- Search widget-->
+
+				<div class="row">
+					<div class="card-body">
+						<form class="form-inline my-5 my-lg-3" id="add4">
+							<input class="form-control mr-sm-3 " id="search_service" type="search" placeholder="Search"
+								aria-label="Search">
+							<button class="btn btn-primary" type="submit">
+								<i class="fas fa-search fa-sm"></i>
+							</button>
+						</form>
+					</div>
+
+					<!-- Categories widget-->
+
+					<div class="title"><strong>Category</strong></div>
+					<ul id="category-tabs">
+						<li><a href="javascript:void" class="main-category">Đồ ăn</a>
+							<ul class="sub-category-tabs">
+								<li><a href="javascript:void" onclick="list_service_bycategory(1)">Thịt</a></li>
+								<li><a href="javascript:void" onclick="list_service_bycategory(2)">Cá</a></li>
+								<li><a href="javascript:void" onclick="list_service_bycategory(3)">Rau củ</a></li>
+							</ul>
+						</li>
+					</ul>
+					<ul id="category-tabs">
+						<li><a href="javascript:void" class="main-category">Nước uống</a>
+							<ul class="sub-category-tabs">
+								<li><a href="javascript:void">Pepsi</a></li>
+								<li><a href="javascript:void">Coca</a></li>
+								<li><a href="javascript:void">Rượu JS</a></li>
+							</ul>
+						</li>
+					</ul>
+					<ul id="category-tabs">
+						<li><a href="javascript:void" class="main-category">Đồ gia dụng, vệ sinh</a>
+							<ul class="sub-category-tabs">
+								<li><a href="javascript:void">Đồ gia dụng</a></li>
+								<li><a href="javascript:void">Đồ vệ sinh</a></li>
+								<li><a href="javascript:void">Mai Thúy</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<!-- Blog entries-->
+
+
+
+			<div class=" col-lg-8">
+				<!-- Nested row for non-featured blog posts-->
+				<div class="row" id="allservicess">
+
+
+
+				</div>
+				<!-- next page-->
+				<nav aria-label="Pagination">
+					<hr class="my-0" />
+					<ul class="pagination justify-content-center my-4">
+						<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"
+								aria-disabled="true">Newer</a></li>
+						<li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
+						<li class="page-item"><a class="page-link" href="#!">2</a></li>
+						<li class="page-item"><a class="page-link" href="#!">3</a></li>
+						<li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
+						<li class="page-item"><a class="page-link" href="#!">15</a></li>
+						<li class="page-item"><a class="page-link" href="#!">Older</a></li>
+					</ul>
+				</nav>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<script>
+	$('#category-tabs li a').click(function () {
+		$(this).next('ul').slideToggle('500');
+		$(this).find('i').toggleClass('fa-minus fa-plus ')
+	});
+
+
+
+	/*ham xu ly anh*/
+	function Xulyanh(link) {
+		link = link.split('d/');
+		console.log(link);
+		link = link[1];
+		console.log(link);
+		link = link.split('/');
+		console.log(link);
+		link = link[0];
+		console.log(link);
+		return link;
+	}
+</script>
+
+
+
+
+<script type='text/x-handlebars-template' id='service-table'></script>
+<script type='text/x-handlebars-template' id='service-table1'></script>
+<script type='text/x-handlebars-template' id='allservices'></script>
+
+
+<div id="all-r"></div>
+{{!-- them vao gio hang localStorage.setItem("senddata", JSON.stringify(b)); --}}
+<script>
+	var list_service = '';
+
+	function send_idservice(id) {
+		localStorage.setItem("send_data", id);
+		window.location.assign("http://localhost:8888/detail");
+
+	}
+</script>
+
+
+{{!-- function hien thi danh sach san pham theo loai san pham --}}
+
+<script>
+	function list_service_bycategory(id) {
+
+		document.getElementById("allservicess").innerHTML = "";
+		console.log(id);
+		for (let i = 1; i < 20; i++) {
+			arr_img = arr_img + ',' + 's' + i + '.png';
+		}
+		arr_img = arr_img.split(',');
+		arr_img.shift();
+
+		getlistservice_byidcategory(id, (result) => {
+			var birds = result;
+			var ele = document.getElementById('allservicess');
+			console.log(birds.length);
+			for (var i = 0; i < birds.length; i++) {
+
+				var list_arr_service = "";
+				console.log("anh ne: " + birds[i].image);
+				ele.innerHTML = ele.innerHTML +
+					"<div class=\"col-lg-6\">" +
+					"<div class=\"card mb-4\">" +
+					"<a href=\"#!\">" +
+					"<img class=\"card-img-top\" src=\"https://drive.google.com/uc?export=view&id="+Xulyanh(""+birds[i].image+"")+"\">" +
+					"</a>" +
+					"<div class=\"card-body\">" +
+
+					"<h2 class=\"card-title h4\">" + birds[i].tenSP + "</h2>" + birds[i].giaTien + '&nbsp' + "VNĐ" + "<br>" + "Số lượng còn lại: " + birds[i].sl +
+					"<br>" +
+
+					"<a class=\"w-55 btn btn-primary\" onclick=\"send_idservice(" + birds[i].id + ")\" id=\"detai\"> Chi tiết sản phẩm</a>" +
+
+					"</div>" +
+					"</div>" +
+					"</div>";
+			}
+			document.getElementById("allservicess").innerHTML = ele.innerHTML;
+			console.log(ele);
+		});
+
+
+
+	}
+
+</script>
+
+<script>
+	var arr_img;
+	for (let i = 1; i < 20; i++) {
+		arr_img = arr_img + ',' + 's' + i + '.png';
+	}
+	arr_img = arr_img.split(',');
+	arr_img.shift();
+
+	get_allService((result) => {
+		var birds = result;
+		var ele = document.getElementById('allservicess');
+		console.log(birds.length);
+		for (var i = 0; i <= birds.length; i++) {
+
+			var list_arr_service = "";
+
+			for (let j = 0; j < result.length; j++) {
+
+				list_arr_service = list_arr_service + ',' + result[j].tenSP;
+			}
+			list_arr_service = list_arr_service.substr(1);
+
+			console.log(list_arr_service);
+			// POPULATE SELECT ELEMENT WITH JSON.
+			ele.innerHTML = ele.innerHTML +
+				"<div class=\"col-lg-6\">" +
+				"<div class=\"card mb-4\">" +
+				"<a href=\"https://drive.google.com/file/d/1d3XqbQdX_--6zWB0lmmNEnX64453yciP/view\">" +
+				"<img class=\"card-img-top\"  src=\"https://drive.google.com/uc?export=view&id="+Xulyanh(""+birds[i].image+"")+"\">" +
+				"</a>" +
+				"<div class=\"card-body\">" +
+
+				"<h2 class=\"card-title h4\">" + birds[i].tenSP + "</h2>" + birds[i].giaTien + "VNĐ" + "<br>" + "Số lượng còn lại: " + birds[i].sl + " " +
+				"<br>" +
+
+
+				"<br>" +
+				"<a class=\"w-55 btn btn-primary\" onclick=\"send_idservice(" + birds[i].id + ")\" id=\"detai\"> Chi tiết sản phẩm</a>" +
+
+				"</div>" +
+				"</div>" +
+				"</div>";
+
+
+		}
+		document.getElementById("allservicess").innerHTML = ele;
+	});
+</script>
+
+<script>
+	function search_service(name) {
+		document.getElementById("allservicess").innerHTML = "";
+		var temp_service = document.getElementById('search_service').value;
+		console.log(temp_service);
+		getServices_byname(temp_service, (result) => {
+			var birds = result;
+			var ele = document.getElementById('allservicess');
+			for (var i = 0; i <= birds.length; i++) {
+				// POPULATE SELECT ELEMENT WITH JSON.
+				ele.innerHTML = ele.innerHTML + "<div class=\"col-lg-6\">" +
+					"<div class=\"card mb-4\">" +
+					"<a href=\"#!\">" +
+					"<img class=\"card-img-top\" src=\"https://drive.google.com/uc?export=view&id="+Xulyanh(""+birds[i].image+"")+"\">" +
+					"</a>" +
+					"<div class=\"card-body\">" +
+
+					"<h2 class=\"card-title h4\">" + birds[i].tenSP + "</h2>" + birds[i].giaTien + "VNĐ" + "<br>" + "Số lượng còn lại: " + birds[i].sl + " " +
+					"<br>" +
+
+
+					"<br>" +
+					"<a class=\"w-55 btn btn-primary\" onclick=\"send_idservice(" + birds[i].id + ")\" id=\"detai\"> Chi tiết sản phẩm</a>" +
+
+					"</div>" +
+					"</div>" +
+					"</div>";
+			}
+			document.getElementById("allservicess").innerHTML = ele;
+		});
+	}
+</script>
+
+
+
+<script>
+	var form = document.getElementById('add4');
+	form.addEventListener('submit', function (event) {
+		event.preventDefault();
+		search_service();
+	});
+
+</script>
+
+
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/styles2.css" />
