@@ -97,23 +97,23 @@ router.get('/supplier', function (req, res, next) {
 });
 
 router.get('/sp_add_products', function (req, res, next) {
-  res.render('sp_add_products', {layout: 'admin'}) 
+  res.render('sp_add_products', {layout: 'customer'}) 
 });
 
 router.get('/sp_list_order', function (req, res, next) {
-  res.render('sp_list_order', {layout: 'admin'}) 
+  res.render('sp_list_order', {layout: 'customer'}) 
 });
 
 router.get('/sp_list_product', function (req, res, next) {
-  res.render('sp_list_product', {layout: 'admin'}) 
+  res.render('sp_list_product', {layout: 'customer'}) 
 });
 
 router.get('/shipper', function (req, res, next) {
-  res.render('shipper', {layout: 'admin'}) 
+  res.render('shipper', {layout: 'customer'}) 
 });
 
 router.get('/shp_list_orders', function (req, res, next) {
-  res.render('shp_list_orders', {layout: 'admin'}) 
+  res.render('shp_list_orders', {layout: 'customer'}) 
 });
 
 router.get('/register', function (req, res, next) {
@@ -145,21 +145,29 @@ router.get('/login_ncc', function (req, res, next) {
 });
 
 
+router.get('/cac', function (req, res, next) {
+  res.render('cac', {layout: 'customer'}) 
+});
+
 router.get('/dangkytiem', function (req, res, next) {
-  res.render('', {layout: 'customer'}) 
+  res.render('dangkytiem', {layout: 'customer'}) 
 });
 
 router.get('/datmuavacxin', function (req, res, next) {
-  res.render('', {layout: 'customer'}) 
+  res.render('datmuavacxin', {layout: 'customer'}) 
 });
 
 router.get('/xemgoitiem', function (req, res, next) {
-  res.render('', {layout: 'customer'}) 
+  res.render('xemgoitiem', {layout: 'customer'}) 
 });
 
 router.get('/tuvan', function (req, res, next) {
-  res.render('', {layout: 'customer'}) 
+  res.render('tuvan', {layout: 'customer'}) 
 });
+
+
+
+
 
 
 
