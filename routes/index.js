@@ -165,6 +165,9 @@ router.get('/tuvan', function (req, res, next) {
   res.render('tuvan', {layout: 'customer'}) 
 });
 
+router.get('/detailin', function (req, res, next) {
+  res.render('detailin', {layout: 'customer'}) 
+});
 
 
 
