@@ -21,96 +21,154 @@
 
 		<div class="row">
 			<!-- Side widgets-->
-			<div class="col-lg-4">
+			<div class="col-lg-7">
 				<!-- Search widget-->
 
 				<div class="row">
-					<div class="card-body">
-						<form class="form-inline my-5 my-lg-3" id="add4">
-							<input class="form-control mr-sm-3 " id="search_service" type="search" placeholder="Search"
-								aria-label="Search">
-							<button class="btn btn-primary" type="submit">
-								<i class="fas fa-search fa-sm"></i>
-							</button>
-						</form>
-					</div>
 
-					<!-- Categories widget-->
+<form class="row g-3">
+<h3>Thông tin người được tiêm</h3>
+<p>Quý khách có thể đăng ký cùng lúc cho tối đa 5 người tiêm, VNVC chỉ thực hiện tiêm chủng cho 
+Khách hàng có thông tin đăng ký trùng khớp hoàn toàn với thông tin Quý Khách cung cấp tại đây.</p>
+  <div class="col-md-6">
+    <label for="validationDefault01" class="form-label">Nhập mã khách hàng tại VNVC</label>
+    <input type="text" class="form-control" id="validationDefault01"  required>
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault02" class="form-label">Ngày sinh người tiêm</label>
+    <input type="date" class="form-control" id="validationDefault02"  required>
+  </div>
+  <p>Nếu đã có mã số tiêm chủng tại VNVC (mã khách hàng), vui lòng nhập mã tiêm chủng và ngày tháng năm sinh để tự động điền thông tin.
+Mã tiêm chủng VNVC là dãy số được in trên sticker dán trên sổ tiêm chủng.</p>
+<div class="col-md-6">
+    <label for="validationDefault01" class="form-label">Họ và tên *</label>
+    <input type="text" class="form-control" id="validationDefault01"  required>
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault04" class="form-label">Mối quan hệ</label>
+    <select class="form-select" id="validationDefault04" required>
+      <option selected disabled value="">Choose...</option>
+      
+    </select>
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault02" class="form-label">Ngày sinh </label>
+    <input type="date" class="form-control" id="validationDefault02"  required>
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault04" class="form-label">Giới tính</label>
+    <select class="form-select" id="validationDefault04" required>
+      <option selected disabled value="">Choose...</option>
+      <option value="">Nữ</option>
+	  <option value="">Nam</option>
+    </select>
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault03" class="form-label">Số điện thoại</label>
+    <input type="text" class="form-control" id="validationDefault03" required>
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault03" class="form-label">Email</label>
+    <input type="text" class="form-control" id="validationDefault03" required>
+  </div>
+  <div class="col-md-12">
+    <label for="validationDefault03" class="form-label">Địa chỉ</label>
+    <input type="text" class="form-control" id="validationDefault03" required>
+  </div>
+  
+  <div class="col-md-4">
+    <label for="validationDefault05" class="form-label">Tỉnh/ Thành *</label>
+    <select class="form-select" id="validationDefault04" required>
+      <option selected disabled value="">Choose...</option>
+      <option value="">...</option>
+	  
+    </select>
+  </div>
 
-					<div class="title"><strong>Danh mục</strong></div>
-					<ul id="category-tabs">
-						<li><a href="javascript:void" class="main-category">Vắc xin cho người trưởng thành</a>
-							<ul class="sub-category-tabs">
-								<li><a href="javascript:void" onclick="list_service_bycategory(1)">Gói 1 - 13 mũi</a></li>
-								<li><a href="javascript:void" onclick="list_service_bycategory(2)">Gói 2 - 10 mũi</a></li>
-								<li><a href="javascript:void" onclick="list_service_bycategory(3)">Gói 3 - 13 mũi</a></li>
-							</ul>
-						</li>
-					</ul>
-					<ul id="category-tabs">
-						<li><a href="javascript:void" class="main-category">Vắc xin cho phụ nữ trước mang thai</a>
-							<ul class="sub-category-tabs">
-								<li><a href="javascript:void">Gói 1 - 11 mũi</a></li>
-								<li><a href="javascript:void">Gói 2 - 8 mũi</a></li>
-								<li><a href="javascript:void">Gói 3 - 11 mũi</a></li>
-							</ul>
-						</li>
-					</ul>
-					<ul id="category-tabs">
-						<li><a href="javascript:void" class="main-category">Vắc xin cho trẻ em</a>
-							<ul class="sub-category-tabs">
-								<li><a href="javascript:void">0 - 9 tháng</a></li>
-								<li><a href="javascript:void">0 - 12 tháng</a></li>
-								<li><a href="javascript:void">0 - 24 tháng</a></li>
-								<li><a href="javascript:void">6 - 24 tháng</a></li>
-								<li><a href="javascript:void">12 - 24 tháng</a></li>
-							</ul>
-						</li>
-					</ul>
-					<ul id="category-tabs">
-						<li><a href="javascript:void" class="main-category">Vắc xin cho trẻ tiền học đường</a>
-							<ul class="sub-category-tabs">
-								<li><a href="javascript:void">4 tuổi - 6 tuổi</a></li>
-								
-							</ul>
-						</li>
-					</ul>
-					<ul id="category-tabs">
-						<li><a href="javascript:void" class="main-category">Vắc xin cho tuổi vị thành niên và thanh niên</a>
-							<ul class="sub-category-tabs">
-								<li><a href="javascript:void">9 tuổi - 18 tuổi</a></li>
-								
-							</ul>
-						</li>
-					</ul>
-				</div>
+  <div class="col-md-4">
+    <label for="validationDefault06" class="form-label">Quận/ Huyện *</label>
+    <select class="form-select" id="validationDefault04" required>
+      <option selected disabled value="">Choose...</option>
+      <option value="">...</option>
+	  
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <label for="validationDefault07" class="form-label">Phường/ Xã *</label>
+    <select class="form-select" id="validationDefault04" required>
+      <option selected disabled value="">Choose...</option>
+      <option value="">...</option>
+	  
+    </select>
+  </div>
+ <h3>Chọn địa điểm mong muốn tiêm</h3> 
+ <div class="col-md-6">
+    <label for="validationDefault05" class="form-label">Tỉnh/ Thành *</label>
+    <select class="form-select" id="validationDefault04" required>
+      <option selected disabled value="">Choose...</option>
+      <option value="">...</option>
+	  
+    </select>
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault05" class="form-label">Tỉnh/ Thành *</label>
+    <select class="form-select" id="validationDefault04" required>
+      <option selected disabled value="">Choose...</option>
+      <option value="">...</option>
+	  
+    </select>
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault08" class="form-label">Trung tâm VNVC gần quý khách *</label>
+    <input type="text" class="form-control" id="validationDefault03" required>
+  </div> 
+
+<h3>Chọn Vắc xin cho người tiêm</h3>
+<p>Quý khách có thể đăng ký thêm các loại vắc xin khác và sử dụng cho nhiều lần tiêm khác nhau.</p>
+
+<div class="col-md-12">
+    <label for="validationDefault010" class="form-label">Chọn Vắc xin cần tiêm</label>
+    <select class="form-select" id="validationDefault04" required>
+      <option selected disabled value="">Choose...</option>
+      <option value="">...</option>
+	  
+    </select>
+  </div>
+
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">......</button>
+  </div>
+
+  
+</form>
+
+
+
+
+
+
+<!-- -->
+</div>
 
 			</div>
 			<!-- Blog entries-->
 
 
 
-			<div class=" col-lg-8">
+			<div class=" col-lg-5">
 				<!-- Nested row for non-featured blog posts-->
 				<div class="row" id="allservicess">
+				<h3> DANH SÁCH NGƯỜI TIÊM</h3>
+
+
+				
 
 
 
 				</div>
 				<!-- next page-->
-				<nav aria-label="Pagination">
-					<hr class="my-0" />
-					<ul class="pagination justify-content-center my-4">
-						<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"
-								aria-disabled="true">Newer</a></li>
-						<li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
-						<li class="page-item"><a class="page-link" href="#!">2</a></li>
-						<li class="page-item"><a class="page-link" href="#!">3</a></li>
-						<li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
-						<li class="page-item"><a class="page-link" href="#!">15</a></li>
-						<li class="page-item"><a class="page-link" href="#!">Older</a></li>
-					</ul>
-				</nav>
+				
 			</div>
 
 		</div>
@@ -303,5 +361,25 @@
 </script>
 
 
+<script>
+	(function () {
+  'use strict'
 
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>
 <link rel="stylesheet" type="text/css" href="/stylesheets/styles2.css" />
