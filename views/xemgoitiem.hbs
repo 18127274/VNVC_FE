@@ -140,6 +140,21 @@
 		window.location.assign("http://localhost:8888/detail");
 
 	}
+
+	var getCookies = function () {
+		var pairs = document.cookie.split(";");
+		var cookies = {};
+		for (var i = 0; i < pairs.length; i++) {
+			var pair = pairs[i].split("=");
+			cookies[(pair[0] + '').trim()] = unescape(pair.slice(1).join('='));
+		}
+		return cookies;
+	}
+
+	var myCookies = getCookies();
+	console.log(myCookies.secret); // "do not tell you"
+	console.log(document.cookie);
+
 </script>
 
 
@@ -168,7 +183,7 @@
 					"<div class=\"col-lg-6\">" +
 					"<div class=\"card mb-4\">" +
 					"<a href=\"#!\">" +
-					"<img class=\"card-img-top\" src=\"https://drive.google.com/uc?export=view&id="+Xulyanh(""+birds[i].image+"")+"\">" +
+					"<img class=\"card-img-top\" src=\"https://drive.google.com/uc?export=view&id=" + Xulyanh("" + birds[i].image + "") + "\">" +
 					"</a>" +
 					"<div class=\"card-body\">" +
 
@@ -219,7 +234,7 @@
 				"<div class=\"col-lg-6\">" +
 				"<div class=\"card mb-4\">" +
 				"<a href=\"https://drive.google.com/file/d/1d3XqbQdX_--6zWB0lmmNEnX64453yciP/view\">" +
-				"<img class=\"card-img-top\"  src=\"https://drive.google.com/uc?export=view&id="+Xulyanh(""+birds[i].image+"")+"\">" +
+				"<img class=\"card-img-top\"  src=\"https://drive.google.com/uc?export=view&id=" + Xulyanh("" + birds[i].image + "") + "\">" +
 				"</a>" +
 				"<div class=\"card-body\">" +
 
@@ -253,7 +268,7 @@
 				ele.innerHTML = ele.innerHTML + "<div class=\"col-lg-6\">" +
 					"<div class=\"card mb-4\">" +
 					"<a href=\"#!\">" +
-					"<img class=\"card-img-top\" src=\"https://drive.google.com/uc?export=view&id="+Xulyanh(""+birds[i].image+"")+"\">" +
+					"<img class=\"card-img-top\" src=\"https://drive.google.com/uc?export=view&id=" + Xulyanh("" + birds[i].image + "") + "\">" +
 					"</a>" +
 					"<div class=\"card-body\">" +
 

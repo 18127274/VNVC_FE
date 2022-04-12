@@ -129,42 +129,7 @@ function add_product_into_cart(masanpham, makhachhang, soluong) {
   );
 }
 
-function add_service(tensp, maloai, mancc, giatien, sl, min, link_image) {
-  console.log(tensp);
-  console.log(maloai);
-  console.log(mancc);
-  console.log(giatien);
-  console.log(sl);
-  console.log(min);
-  console.log(link_image);
-  maloai = parseInt(maloai);
-  giatien = parseInt(giatien);
-  sl = parseInt(sl);
-  min = parseInt(min);
 
-  POST('http://localhost:8081/api/sanpham', {
-    "tenSP": tensp,
-    "maLoai": maloai,
-    "maNCC": mancc,
-    "giaTien": giatien,
-    "sl": sl,
-    "min": min,
-    "image": link_image
-  }).then(res =>
-    res.json().then(data => {
-      console.log(data);
-      if (data != "") {
-        alert("Thêm sản phẩm thành công");
-      }
-      else {
-        alert("Thêm sản phẩm thất bại");
-      }
-
-    })
-  );
-}
-
-http://localhost:8081/api/sanpham
 
 function delete_service_ofcart(idchitiet) {
   DELETE('http://localhost:8080/api/deletegiohang/' + idchitiet).then(res =>
@@ -188,7 +153,7 @@ function delete_service_ofcart(idchitiet) {
 function getlistservice_byidcategory(id, callback) {
   var array = [];
   console.log(id);
-  GET('http://localhost:8081/api/sanpham/filter/' + id).then(res =>
+  GET('http://localhost:8888/vacxin/get_goivacxin_phanloai/' + id).then(res =>
     res.json().then(data => {
 
       var template = $('#service-table').html();

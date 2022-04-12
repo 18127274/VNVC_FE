@@ -39,47 +39,35 @@
 
 					<div class="title"><strong>Danh mục</strong></div>
 					<ul id="category-tabs">
-						<li><a href="javascript:void" class="main-category">Vắc xin cho người trưởng thành</a>
-							<ul class="sub-category-tabs">
-								<li><a href="javascript:void" onclick="list_service_bycategory(1)">Gói 1 - 13 mũi</a></li>
-								<li><a href="javascript:void" onclick="list_service_bycategory(2)">Gói 2 - 10 mũi</a></li>
-								<li><a href="javascript:void" onclick="list_service_bycategory(3)">Gói 3 - 13 mũi</a></li>
-							</ul>
+						<li><a href="javascript:void" class="main-category" href="javascript:void"
+								onclick="list_service_bycategory(2)">Vắc xin cho người trưởng thành</a>
+
 						</li>
 					</ul>
 					<ul id="category-tabs">
 						<li><a href="javascript:void" class="main-category">Vắc xin cho phụ nữ trước mang thai</a>
-							<ul class="sub-category-tabs">
-								<li><a href="javascript:void">Gói 1 - 11 mũi</a></li>
-								<li><a href="javascript:void">Gói 2 - 8 mũi</a></li>
-								<li><a href="javascript:void">Gói 3 - 11 mũi</a></li>
-							</ul>
+
 						</li>
 					</ul>
 					<ul id="category-tabs">
-						<li><a href="javascript:void" class="main-category">Vắc xin cho trẻ em</a>
-							<ul class="sub-category-tabs">
-								<li><a href="javascript:void">0 - 9 tháng</a></li>
-								<li><a href="javascript:void">0 - 12 tháng</a></li>
-								<li><a href="javascript:void">0 - 24 tháng</a></li>
-								<li><a href="javascript:void">6 - 24 tháng</a></li>
-								<li><a href="javascript:void">12 - 24 tháng</a></li>
-							</ul>
+						<li><a href="javascript:void" class="main-category" href="javascript:void"
+								onclick="list_service_bycategory(1)">Vắc xin cho trẻ em</a>
+
 						</li>
 					</ul>
 					<ul id="category-tabs">
 						<li><a href="javascript:void" class="main-category">Vắc xin cho trẻ tiền học đường</a>
 							<ul class="sub-category-tabs">
 								<li><a href="javascript:void">4 tuổi - 6 tuổi</a></li>
-								
 							</ul>
 						</li>
 					</ul>
 					<ul id="category-tabs">
-						<li><a href="javascript:void" class="main-category">Vắc xin cho tuổi vị thành niên và thanh niên</a>
+						<li><a href="javascript:void" class="main-category">Vắc xin cho tuổi vị thành niên và thanh
+								niên</a>
 							<ul class="sub-category-tabs">
 								<li><a href="javascript:void">9 tuổi - 18 tuổi</a></li>
-								
+
 							</ul>
 						</li>
 					</ul>
@@ -124,20 +112,6 @@
 		$(this).find('i').toggleClass('fa-minus fa-plus ')
 	});
 
-
-
-	/*ham xu ly anh*/
-	function Xulyanh(link) {
-		link = link.split('d/');
-		console.log(link);
-		link = link[1];
-		console.log(link);
-		link = link.split('/');
-		console.log(link);
-		link = link[0];
-		console.log(link);
-		return link;
-	}
 </script>
 
 
@@ -150,14 +124,23 @@
 
 <div id="all-r"></div>
 {{!-- them vao gio hang localStorage.setItem("senddata", JSON.stringify(b)); --}}
+
 <script>
-	var list_service = '';
+	var list_id = "";
+    function add_service_tocart(id) {
+		//lay ra danh sach cac id goi tiem 
+		if(list_id == ""){
+			list_id = list_id + id + ',';
+		}
+		else{
+			list_id = list_id + id + ',';
+		}
+		console.log(list_id);
 
-	function send_idservice(id) {
-		localStorage.setItem("send_data", id);
-		window.location.assign("http://localhost:8888/detail");
-
-	}
+		//cat phan tu , cuoi list 
+		/*list_id = list_id.substring(0, list_id.length - 1);*/
+		localStorage.setItem("senddata_cart", list_id);
+    }
 </script>
 
 
@@ -168,32 +151,26 @@
 
 		document.getElementById("allservicess").innerHTML = "";
 		console.log(id);
-		for (let i = 1; i < 20; i++) {
-			arr_img = arr_img + ',' + 's' + i + '.png';
-		}
-		arr_img = arr_img.split(',');
-		arr_img.shift();
 
 		getlistservice_byidcategory(id, (result) => {
 			var birds = result;
 			var ele = document.getElementById('allservicess');
-			console.log(birds.length);
-			for (var i = 0; i < birds.length; i++) {
-
-				var list_arr_service = "";
-				console.log("anh ne: " + birds[i].image);
+			console.log(birds.payload.length);
+			console.log(birds.payload[0].Ten);
+			console.log(birds.payload[0].GiaTien);
+			for (var i = 0; i < birds.payload.length; i++) {
+				console.log('con cac');
 				ele.innerHTML = ele.innerHTML +
 					"<div class=\"col-lg-6\">" +
 					"<div class=\"card mb-4\">" +
-					"<a href=\"#!\">" +
-					"<img class=\"card-img-top\" src=\"https://drive.google.com/uc?export=view&id="+Xulyanh(""+birds[i].image+"")+"\">" +
-					"</a>" +
+
 					"<div class=\"card-body\">" +
 
-					"<h2 class=\"card-title h4\">" + birds[i].tenSP + "</h2>" + birds[i].giaTien + '&nbsp' + "VNĐ" + "<br>" + "Số lượng còn lại: " + birds[i].sl +
-					"<br>" +
+					"<h2 class=\"card-title h4\">" + birds.payload[0].Ten + "</h2>" + birds.payload[0].GiaTien + '&nbsp' + "VNĐ" + "<br>" +
+					"<button class=\"w-45 btn btn-primary btn-lg\" type=\"submit\">" +
 
-					"<a class=\"w-55 btn btn-primary\" onclick=\"send_idservice(" + birds[i].id + ")\" id=\"detai\"> Chi tiết sản phẩm</a>" +
+					"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart(" + birds.payload[0].id + ")\" id=\"detai\" >Chọn</a>" +
+					"</button>" +
 
 					"</div>" +
 					"</div>" +
@@ -202,61 +179,10 @@
 			document.getElementById("allservicess").innerHTML = ele.innerHTML;
 			console.log(ele);
 		});
-
-
-
 	}
-
 </script>
 
-<script>
-	var arr_img;
-	for (let i = 1; i < 20; i++) {
-		arr_img = arr_img + ',' + 's' + i + '.png';
-	}
-	arr_img = arr_img.split(',');
-	arr_img.shift();
 
-	get_allService((result) => {
-		var birds = result;
-		var ele = document.getElementById('allservicess');
-		console.log(birds.length);
-		for (var i = 0; i <= birds.length; i++) {
-
-			var list_arr_service = "";
-
-			for (let j = 0; j < result.length; j++) {
-
-				list_arr_service = list_arr_service + ',' + result[j].tenSP;
-			}
-			list_arr_service = list_arr_service.substr(1);
-
-			console.log(list_arr_service);
-			// POPULATE SELECT ELEMENT WITH JSON.
-			ele.innerHTML = ele.innerHTML +
-				"<div class=\"col-lg-6\">" +
-				"<div class=\"card mb-4\">" +
-				"<a href=\"https://drive.google.com/file/d/1d3XqbQdX_--6zWB0lmmNEnX64453yciP/view\">" +
-				"<img class=\"card-img-top\"  src=\"https://drive.google.com/uc?export=view&id="+Xulyanh(""+birds[i].image+"")+"\">" +
-				"</a>" +
-				"<div class=\"card-body\">" +
-
-				"<h2 class=\"card-title h4\">" + birds[i].tenSP + "</h2>" + birds[i].giaTien + "VNĐ" + "<br>" + "Số lượng còn lại: " + birds[i].sl + " " +
-				"<br>" +
-
-
-				"<br>" +
-				"<a class=\"w-55 btn btn-primary\" onclick=\"send_idservice(" + birds[i].id + ")\" id=\"detai\"> Chi tiết sản phẩm</a>" +
-
-				"</div>" +
-				"</div>" +
-				"</div>";
-
-
-		}
-		document.getElementById("allservicess").innerHTML = ele;
-	});
-</script>
 
 <script>
 	function search_service(name) {
@@ -271,7 +197,7 @@
 				ele.innerHTML = ele.innerHTML + "<div class=\"col-lg-6\">" +
 					"<div class=\"card mb-4\">" +
 					"<a href=\"#!\">" +
-					"<img class=\"card-img-top\" src=\"https://drive.google.com/uc?export=view&id="+Xulyanh(""+birds[i].image+"")+"\">" +
+					"<img class=\"card-img-top\" src=\"https://drive.google.com/uc?export=view&id=" + Xulyanh("" + birds[i].image + "") + "\">" +
 					"</a>" +
 					"<div class=\"card-body\">" +
 
