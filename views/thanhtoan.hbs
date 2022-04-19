@@ -27,26 +27,29 @@
 				<div class="row">
 
 <form class="row g-3">
-<h3><b>Thông tin người tiêm</b></h3>
+<h3><b>THÔNG TIN NGƯỜI TIÊM</b></h3>
   <div class="col-md-6">
-    <label for="validationDefault01" class="form-label"><b>Họ tên người tiêm *</b></label>
+    <label for="validationDefault01" class="form-label"><b>Họ và tên *</b></label>
     <input type="text" class="form-control" id="validationDefault01"  required>
   </div>
-  <div class="col-md-3">
-    <label for="validationDefault02" class="form-label"><b>Ngày sinh người tiêm *</b></label>
-    <input type="date" class="form-control" id="validationDefault02"  required>
+  <div class="col-md-6">
+    <label for="validationDefault01" class="form-label"><b>Số diện thoại *</b></label>
+    <input type="text" class="form-control" id="validationDefault01"  required>
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault01" class="form-label"><b>Email *</b></label>
+    <input type="text" class="form-control" id="validationDefault01"  required>
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault01" class="form-label"><b>CMND/CCCD/PASSPORT *</b></label>
+    <input type="text" class="form-control" id="validationDefault01"  required>
   </div>
   
-  <div class="col-md-3">
-    <label for="validationDefault04" class="form-label"><b>Giới tính *</b></label>
-    <select class="form-select" id="validationDefault04" required>
-      <option selected disabled value="">Choose...</option>
-      <option value="">Nữ</option>
-	  <option value="">Nam</option>
-    </select>
-  </div>
-  
-  
+  <div class="col-md-12">
+    <label for="validationDefault08" class="form-label"><b>Địa chỉ *</b></label>
+    <input type="text" class="form-control" id="validationDefault03" required>
+  </div> 
+
   <div class="col-md-4">
     <label for="validationDefault05" class="form-label"><b>Tỉnh/ Thành *</b></label>
     <select class="form-select" id="validationDefault04" required>
@@ -74,42 +77,22 @@
     </select>
   </div>
   
-  <div class="col-md-12">
-    <label for="validationDefault08" class="form-label"><b>Số nhà, tên đường *</b></label>
-    <input type="text" class="form-control" id="validationDefault03" required>
-  </div> 
+  
 
-
-<h3><b>Thông tin dịch vụ</b></h3>
-
-<div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Home</a>
-      <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">Profile</a>
-      
-    </div>
-
-
-
-
-
-<div class="col-md-12">
-    <label for="validationDefault010" class="form-label"><b>Trung tâm VNVC mong muốn tiêm *</b></label>
+<h3><b>CHỌN PHƯƠNG THỨC THANH TOÁN</b></h3>
+  
+    <div class="col-md-12">
+    <label for="validationDefault07" class="form-label"><b>Hình thức thanh toán *</b></label>
     <select class="form-select" id="validationDefault04" required>
       <option selected disabled value="">Choose...</option>
-      <option value="">...</option>
-	  
+      <option value="">Thanh toán bằng thẻ nội địa (ATM)</option>
+      <option value="">Thanh toán bằng thẻ VISA/MASTER/JCB</option>
+      <option value="">Thanh toán bằng thẻ thành viên</option>
+	  <option value="">Thanh toán qua chuyển khoản</option>
+      <option value="">Thanh toán tại trung tâm</option>
     </select>
   </div>
-<div class="col-md-12">
-    <label for="validationDefault02" class="form-label"><b>Ngày mong muốn tiêm *</b></label>
-    <input type="date" class="form-control" id="validationDefault02"  required>
-  </div>
 </form>
-<div class="col-12">
-	<form action="/dangkytiem_lienhe">
-    	<button class="btn btn-primary" type="submit">Tiếp tục</button>
-	</form>
-</div>
 
 
 
@@ -120,13 +103,23 @@
 </div>
 
 			</div>
-<div class="col-lg-4">
-	<div class="row">
-		<img src="/bg1.jpg">
+			<!-- Blog entries-->
+<div class=" col-lg-4 py-5">
+	<div class="row ">
+		<h3><b>DANH SÁCH NGƯỜI TIÊM</b></h3>
+				<br>
+				<br>
+		<div class="col-12">
+			<form action="/datmuadangky">
+    				<button class="btn btn-primary" type="submit">Thanh toán</button>
+			</form>
+  		</div>
 	</div>
-	
+				
 </div>
 
+
+			
 		</div>
 	</div>
 </div>
@@ -338,4 +331,5 @@
     })
 })()
 </script>
+
 <link rel="stylesheet" type="text/css" href="/stylesheets/styles2.css" />

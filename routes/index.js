@@ -175,6 +175,9 @@ router.get('/dangkytiem_lienhe', function (req, res, next) {
 router.get('/datmuadangky', function (req, res, next) {
   res.render('datmuadangky', {layout: 'customer'}) 
 });
+router.get('/thanhtoan', function (req, res, next) {
+  res.render('thanhtoan', {layout: 'customer'}) 
+});
 
 
 
