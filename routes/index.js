@@ -171,8 +171,9 @@ router.get('/detailin', function (req, res, next) {
 router.get('/dangkytiem_lienhe', function (req, res, next) {
   res.render('dangkytiem_lienhe', {layout: 'customer'}) 
 });
-router.get('/datmuavacxin_dangky', function (req, res, next) {
-  res.render('/datmuavacxin_dangky', {layout: 'customer'}) 
+
+router.get('/datmuadangky', function (req, res, next) {
+  res.render('datmuadangky', {layout: 'customer'}) 
 });
 
 
