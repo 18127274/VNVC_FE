@@ -168,6 +168,12 @@ router.get('/tuvan', function (req, res, next) {
 router.get('/detailin', function (req, res, next) {
   res.render('detailin', {layout: 'customer'}) 
 });
+router.get('/dangkytiem_lienhe', function (req, res, next) {
+  res.render('dangkytiem_lienhe', {layout: 'customer'}) 
+});
+router.get('/datmuavacxin_dangky', function (req, res, next) {
+  res.render('/datmuavacxin_dangky', {layout: 'customer'}) 
+});
 
 
 
