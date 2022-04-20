@@ -38,39 +38,27 @@
 					<!-- Categories widget-->
 
 					<div class="title"><strong>Danh mục</strong></div>
+
+					<ul id="category-tabs">
+						<li><a href="javascript:void" class="main-category" onclick="list_all_service1()">Tất cả</a>
+
+						</li>
+					</ul>
+
 					<ul id="category-tabs">
 						<li><a href="javascript:void" class="main-category" href="javascript:void"
 								onclick="list_service_bycategory(2)">Vắc xin cho người trưởng thành</a>
 
 						</li>
 					</ul>
-					<ul id="category-tabs">
-						<li><a href="javascript:void" class="main-category">Vắc xin cho phụ nữ trước mang thai</a>
 
-						</li>
-					</ul>
 					<ul id="category-tabs">
 						<li><a href="javascript:void" class="main-category" href="javascript:void"
 								onclick="list_service_bycategory(1)">Vắc xin cho trẻ em</a>
 
 						</li>
 					</ul>
-					<ul id="category-tabs">
-						<li><a href="javascript:void" class="main-category">Vắc xin cho trẻ tiền học đường</a>
-							<ul class="sub-category-tabs">
-								<li><a href="javascript:void">4 tuổi - 6 tuổi</a></li>
-							</ul>
-						</li>
-					</ul>
-					<ul id="category-tabs">
-						<li><a href="javascript:void" class="main-category">Vắc xin cho tuổi vị thành niên và thanh
-								niên</a>
-							<ul class="sub-category-tabs">
-								<li><a href="javascript:void">9 tuổi - 18 tuổi</a></li>
 
-							</ul>
-						</li>
-					</ul>
 				</div>
 
 			</div>
@@ -100,15 +88,20 @@
 					</ul>
 				</nav>
 			</div>
+
 			<div class=" col-lg-3">
 				<h3>DANH SÁCH VẮC XIN CHỌN MUA</h3>
 				<br>
 				<br>
+				<div class="row" id="list_product">
+
+				</div>
+
 				<div class="col-12">
 					<form action="/datmuadangky">
-    					<button class="btn btn-primary" type="submit">Đăng ký mũi tiêm</button>
+						<button class="btn btn-primary" type="submit">Đăng ký mũi tiêm</button>
 					</form>
-  				</div>
+				</div>
 
 			</div>
 
@@ -137,21 +130,7 @@
 {{!-- them vao gio hang localStorage.setItem("senddata", JSON.stringify(b)); --}}
 
 <script>
-	var list_id = "";
-    function add_service_tocart(id) {
-		//lay ra danh sach cac id goi tiem 
-		if(list_id == ""){
-			list_id = list_id + id + ',';
-		}
-		else{
-			list_id = list_id + id + ',';
-		}
-		console.log(list_id);
 
-		//cat phan tu , cuoi list 
-		/*list_id = list_id.substring(0, list_id.length - 1);*/
-		localStorage.setItem("senddata_cart", list_id);
-    }
 </script>
 
 
@@ -177,22 +156,113 @@
 
 					"<div class=\"card-body\">" +
 
-					"<h2 class=\"card-title h4\">" + birds.payload[0].Ten + "</h2>" + birds.payload[0].GiaTien + '&nbsp' + "VNĐ" + "<br>" +
+					"<h2 class=\"card-title h4\">" + birds.payload[i].Ten + "</h2>" + birds.payload[i].GiaTien + '&nbsp' + "VNĐ" + "<br>" +
+
 					"<button class=\"w-45 btn btn-primary btn-lg\" type=\"submit\">" +
 
-					"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart(" + birds.payload[0].id + ")\" id=\"detai\" >Chọn</a>" +
+					"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart(" + birds.payload[i].PhanLoai_ID + "," + birds.payload[i].id + ")\" id=\"detai\" >Chọn</a>" +
 					"</button>" +
+
 
 					"</div>" +
 					"</div>" +
 					"</div>";
 			}
+			/*"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart(" + birds.payload[0].id + ")\" id=\"detai\" >Chọn</a>" +*/
 			document.getElementById("allservicess").innerHTML = ele.innerHTML;
+
+			/*var form = document.getElementById('add5');
+			form.addEventListener('submit', function (event) {
+				event.preventDefault();
+				
+			});*/
+
 			console.log(ele);
 		});
 	}
+
+	var list_id_product_1 = "";
+
+	localStorage.setItem("cache1", list_id_product_1);
+
+
+	function add_service_tocart(id_category, id_product) {
+		//check xem bien list_id_product co may ma san pham thi hien thi list dssp
+		list_id_product_1 = localStorage.getItem("cache1");
+		if (id_category == 1) {
+			list_id_product_1 = list_id_product_1 + id_product + ',';
+			localStorage.setItem("cache1", list_id_product_1);
+		}
+		else {
+		}
+		console.log(id_category, id_product);
+		console.log(list_id_product_1);
+
+	}
 </script>
 
+
+<script>
+	function list_all_service1() {
+
+		document.getElementById("allservicess").innerHTML = "";
+
+		list_all_service((result) => {
+			var birds = result;
+			var ele = document.getElementById('allservicess');
+			console.log(birds.payload.length);
+			console.log(birds.payload[0].Ten);
+			console.log(birds.payload[0].GiaTien);
+			for (var i = 0; i < birds.payload.length; i++) {
+				console.log('con cac');
+				ele.innerHTML = ele.innerHTML +
+					"<div class=\"col-lg-6\">" +
+					"<div class=\"card mb-4\">" +
+
+					"<div class=\"card-body\">" +
+
+					"<h2 class=\"card-title h4\">" + birds.payload[i].Ten + "</h2>" + birds.payload[i].GiaTien + '&nbsp' + "VNĐ" + "<br>" +
+
+					"<button class=\"w-45 btn btn-primary btn-lg\" type=\"submit\">" +
+
+					"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart("+ birds.payload[i].id + ")\" id=\"detai\" >Chọn</a>" +
+					"</button>" +
+
+
+					"</div>" +
+					"</div>" +
+					"</div>";
+			}
+			/*"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart(" + birds.payload[0].id + ")\" id=\"detai\" >Chọn</a>" +*/
+			document.getElementById("allservicess").innerHTML = ele.innerHTML;
+
+			/*var form = document.getElementById('add5');
+			form.addEventListener('submit', function (event) {
+				event.preventDefault();
+				
+			});*/
+
+			console.log(ele);
+		});
+	}
+
+/*	var list_id_product_1 = "";
+	localStorage.setItem("cache1", list_id_product_1);
+
+	function add_service_tocart(id_category, id_product) {
+		//check xem bien list_id_product co may ma san pham thi hien thi list dssp
+		list_id_product_1 = localStorage.getItem("cache1");
+		if (id_category == 1) {
+			list_id_product_1 = list_id_product_1 + id_product + ',';
+			localStorage.setItem("cache1", list_id_product_1);
+		}
+		else {
+
+		}
+		console.log(id_category, id_product);
+		console.log(list_id_product_1);
+*/
+</script>
 
 
 <script>
@@ -238,6 +308,10 @@
 	});
 
 </script>
+
+
+
+
 
 
 

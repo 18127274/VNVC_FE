@@ -168,6 +168,26 @@ function getlistservice_byidcategory(id, callback) {
   );
 }
 
+function list_all_service(callback) {
+  var array = [];
+
+  GET('http://localhost:8888/vacxin/get_all_goivacxin').then(res =>
+    res.json().then(data => {
+
+      var template = $('#service-table').html();
+      var compiled = Handlebars.compile(template);
+
+      var contextualHtml = compiled({ allservices: data });
+      $('#allservices').html(contextualHtml);
+      array = data;
+      console.log(array);
+      return callback(array);
+    })
+  );
+}
+
+
+
 function Receive_order(mashp, madonhang) {
   /*  PUT('http://localhost:8080/api/tiepnhandonhang/', {
      "MaShipper_input": mashp,
