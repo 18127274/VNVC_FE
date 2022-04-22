@@ -126,30 +126,18 @@
 <script type='text/x-handlebars-template' id='allservices'></script>
 
 
-<div id="all-r"></div>
-{{!-- them vao gio hang localStorage.setItem("senddata", JSON.stringify(b)); --}}
 
-<script>
-
-</script>
-
-
-{{!-- function hien thi danh sach san pham theo loai san pham --}}
-
+{{!-- hien thi san pham theo danh muc --}}
 <script>
 	function list_service_bycategory(id) {
 
 		document.getElementById("allservicess").innerHTML = "";
-		console.log(id);
-
 		getlistservice_byidcategory(id, (result) => {
 			var birds = result;
 			var ele = document.getElementById('allservicess');
-			console.log(birds.payload.length);
-			console.log(birds.payload[0].Ten);
-			console.log(birds.payload[0].GiaTien);
+
 			for (var i = 0; i < birds.payload.length; i++) {
-				console.log('con cac');
+
 				ele.innerHTML = ele.innerHTML +
 					"<div class=\"col-lg-6\">" +
 					"<div class=\"card mb-4\">" +
@@ -160,48 +148,18 @@
 
 					"<button class=\"w-45 btn btn-primary btn-lg\" type=\"submit\">" +
 
-					"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart(" + birds.payload[i].PhanLoai_ID + "," + birds.payload[i].id + ")\" id=\"detai\" >Chọn</a>" +
+					"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart(" + birds.payload[i].id + ")\" id=\"detai\" >Chọn</a>" +
 					"</button>" +
-
-
 					"</div>" +
 					"</div>" +
 					"</div>";
 			}
-			/*"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart(" + birds.payload[0].id + ")\" id=\"detai\" >Chọn</a>" +*/
 			document.getElementById("allservicess").innerHTML = ele.innerHTML;
-
-			/*var form = document.getElementById('add5');
-			form.addEventListener('submit', function (event) {
-				event.preventDefault();
-				
-			});*/
-
-			console.log(ele);
 		});
-	}
-
-	var list_id_product_1 = "";
-
-	localStorage.setItem("cache1", list_id_product_1);
-
-
-	function add_service_tocart(id_category, id_product) {
-		//check xem bien list_id_product co may ma san pham thi hien thi list dssp
-		list_id_product_1 = localStorage.getItem("cache1");
-		if (id_category == 1) {
-			list_id_product_1 = list_id_product_1 + id_product + ',';
-			localStorage.setItem("cache1", list_id_product_1);
-		}
-		else {
-		}
-		console.log(id_category, id_product);
-		console.log(list_id_product_1);
-
 	}
 </script>
 
-
+{{!-- hien thi tat ca san pham hien co --}}
 <script>
 	function list_all_service1() {
 
@@ -210,11 +168,8 @@
 		list_all_service((result) => {
 			var birds = result;
 			var ele = document.getElementById('allservicess');
-			console.log(birds.payload.length);
-			console.log(birds.payload[0].Ten);
-			console.log(birds.payload[0].GiaTien);
 			for (var i = 0; i < birds.payload.length; i++) {
-				console.log('con cac');
+
 				ele.innerHTML = ele.innerHTML +
 					"<div class=\"col-lg-6\">" +
 					"<div class=\"card mb-4\">" +
@@ -225,7 +180,7 @@
 
 					"<button class=\"w-45 btn btn-primary btn-lg\" type=\"submit\">" +
 
-					"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart("+ birds.payload[i].id + ")\" id=\"detai\" >Chọn</a>" +
+					"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart(" + birds.payload[i].id + ")\" id=\"detai\" >Chọn</a>" +
 					"</button>" +
 
 
@@ -236,35 +191,73 @@
 			/*"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart(" + birds.payload[0].id + ")\" id=\"detai\" >Chọn</a>" +*/
 			document.getElementById("allservicess").innerHTML = ele.innerHTML;
 
-			/*var form = document.getElementById('add5');
-			form.addEventListener('submit', function (event) {
-				event.preventDefault();
-				
-			});*/
 
-			console.log(ele);
 		});
 	}
-
-/*	var list_id_product_1 = "";
-	localStorage.setItem("cache1", list_id_product_1);
-
-	function add_service_tocart(id_category, id_product) {
-		//check xem bien list_id_product co may ma san pham thi hien thi list dssp
-		list_id_product_1 = localStorage.getItem("cache1");
-		if (id_category == 1) {
-			list_id_product_1 = list_id_product_1 + id_product + ',';
-			localStorage.setItem("cache1", list_id_product_1);
-		}
-		else {
-
-		}
-		console.log(id_category, id_product);
-		console.log(list_id_product_1);
-*/
 </script>
 
+{{!-- hien thi cac san pham da chon mua --}}
+<script>
+	function list_view_product(list_id) {
 
+		
+		console.log(list_id);
+
+		list_all_service_by_id(list_id, (result) => {
+			document.getElementById("list_product").innerHTML = "";
+			var birds = result;
+			var ele = document.getElementById('list_product');
+
+			for (var i = 0; i < birds.payload.length; i++) {
+				
+				if (list_id[i] == birds.payload[i].id) {
+					console.log('con cac');
+					ele.innerHTML = ele.innerHTML +
+						"<div class=\"col-lg-6\">" +
+						"<div class=\"card mb-4\">" +
+
+						"<div class=\"card-body\">" +
+
+						"<h2 class=\"card-title h4\">" + birds.payload[i].Ten + "</h2>" + birds.payload[i].GiaTien + '&nbsp' + "VNĐ" + "<br>" +
+
+						"<button class=\"w-45 btn btn-primary btn-lg\" type=\"submit\">" +
+
+						"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart(" + birds.payload[i].id + ")\" id=\"detai\" >Chọn</a>" +
+						"</button>" +
+						"</div>" +
+						"</div>" +
+						"</div>";
+				}
+
+			}
+			/*"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart(" + birds.payload[0].id + ")\" id=\"detai\" >Chọn</a>" +*/
+			document.getElementById("list_product").innerHTML = ele.innerHTML;
+		});
+	}
+</script>
+
+{{!-- add san pham --}}
+
+<script>
+	var list_id_product_1 = "";
+
+	localStorage.setItem("cache1", list_id_product_1);
+	function add_service_tocart(id_product) {
+		
+		//check xem bien list_id_product co may ma san pham thi hien thi list dssp
+		list_id_product_1 = localStorage.getItem("cache1");
+		console.log("list_id truoc khi pump: "+list_id_product_1+"");
+		list_id_product_1 = list_id_product_1 + id_product + ',';
+		localStorage.setItem("cache1", list_id_product_1);
+
+		list_id_product_1 = list_id_product_1.split(',');
+		console.log("list_id sau khi pump: "+list_id_product_1+"");
+		/*list_view_product(list_id_product_1);*/
+		list_view_product(list_id_product_1);
+	}
+</script>
+
+{{!-- tim kiem --}}
 <script>
 	function search_service(name) {
 		document.getElementById("allservicess").innerHTML = "";
@@ -306,7 +299,6 @@
 		event.preventDefault();
 		search_service();
 	});
-
 </script>
 
 

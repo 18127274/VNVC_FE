@@ -152,17 +152,16 @@ function delete_service_ofcart(idchitiet) {
 
 function getlistservice_byidcategory(id, callback) {
   var array = [];
-  console.log(id);
   GET('http://localhost:8888/vacxin/get_goivacxin_phanloai/' + id).then(res =>
     res.json().then(data => {
 
       var template = $('#service-table').html();
       var compiled = Handlebars.compile(template);
-
+      
       var contextualHtml = compiled({ allservices: data });
       $('#allservices').html(contextualHtml);
       array = data;
-      console.log(array);
+      
       return callback(array);
     })
   );
@@ -180,11 +179,32 @@ function list_all_service(callback) {
       var contextualHtml = compiled({ allservices: data });
       $('#allservices').html(contextualHtml);
       array = data;
-      console.log(array);
+
       return callback(array);
     })
   );
 }
+
+function list_all_service_by_id(id, callback) {
+  var array = [];
+
+  GET('http://localhost:8888/vacxin/get_all_goivacxin').then(res =>
+    res.json().then(data => {
+
+      var template = $('#service-table').html();
+      var compiled = Handlebars.compile(template);
+
+      var contextualHtml = compiled({ allservices: data });
+      $('#allservices').html(contextualHtml);
+      array = data;
+      console.log(data);
+      return callback(array);
+    })
+  );
+}
+
+
+
 
 
 
