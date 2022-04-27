@@ -185,6 +185,8 @@ function list_all_service(callback) {
   );
 }
 
+
+
 function list_all_service_by_id(id, callback) {
   var array = [];
 
@@ -202,6 +204,118 @@ function list_all_service_by_id(id, callback) {
     })
   );
 }
+
+function get_allcity(callback) {
+  var array = [];
+
+  GET('http://localhost:8888/location/get_all_tinhthanh').then(res =>
+    res.json().then(data => {
+
+      var template = $('#service-table').html();
+      var compiled = Handlebars.compile(template);
+
+      var contextualHtml = compiled({ allservices: data });
+      $('#allservices').html(contextualHtml);
+      array = data;
+
+      return callback(array);
+    })
+  );
+}
+
+function get_allcity1(callback) {
+  var array = [];
+
+  GET('http://localhost:8888/location/get_all_tinhthanh').then(res =>
+    res.json().then(data => {
+
+      var template = $('#service-table').html();
+      var compiled = Handlebars.compile(template);
+
+      var contextualHtml = compiled({ allservices: data });
+      $('#allservices').html(contextualHtml);
+      array = data;
+
+      return callback(array);
+    })
+  );
+}
+
+
+
+function get_allhometown(id_city,callback) {
+  var array = [];
+
+  GET('http://localhost:8888/location/get_quanhuyen_tinhthanh/' + id_city).then(res =>
+    res.json().then(data => {
+
+      var template = $('#service-table').html();
+      var compiled = Handlebars.compile(template);
+
+      var contextualHtml = compiled({ allservices: data });
+      $('#allservices').html(contextualHtml);
+      array = data;
+
+      return callback(array);
+    })
+  );
+}
+
+function get_allwards(id_district,callback) {
+  var array = [];
+
+  GET('http://localhost:8888/location/get_phuongxa_quanhuyen/' + id_district).then(res =>
+    res.json().then(data => {
+
+      var template = $('#service-table').html();
+      var compiled = Handlebars.compile(template);
+
+      var contextualHtml = compiled({ allservices: data });
+      $('#allservices').html(contextualHtml);
+      array = data;
+
+      return callback(array);
+    })
+  );
+}
+
+function get_allcity_tiem(callback) {
+  var array = [];
+
+  GET('http://localhost:8888/location/get_all_tinhthanh').then(res =>
+    res.json().then(data => {
+
+      var template = $('#service-table').html();
+      var compiled = Handlebars.compile(template);
+
+      var contextualHtml = compiled({ allservices: data });
+      $('#allservices').html(contextualHtml);
+      array = data;
+
+      return callback(array);
+    })
+  );
+}
+
+function get_allhub(id_city,callback) {
+  var array = [];
+
+  GET('http://localhost:8888/location/get_trungtam_tinhthanh/' + id_city).then(res =>
+    res.json().then(data => {
+
+      var template = $('#service-table').html();
+      var compiled = Handlebars.compile(template);
+
+      var contextualHtml = compiled({ allservices: data });
+      $('#allservices').html(contextualHtml);
+      array = data;
+
+      return callback(array);
+    })
+  );
+}
+
+
 
 
 

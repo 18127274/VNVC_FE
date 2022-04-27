@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/stylebutton.css" />
 <img class="card-img" src="/Header.png" alt="..." />
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!--introservice-->
 <!--<header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
@@ -199,17 +199,16 @@
 {{!-- hien thi cac san pham da chon mua --}}
 <script>
 	function list_view_product(list_id) {
-
-		
 		console.log(list_id);
-
+		localStorage.setItem("list_arr_product", list_id);
+		
 		list_all_service_by_id(list_id, (result) => {
 			document.getElementById("list_product").innerHTML = "";
 			var birds = result;
 			var ele = document.getElementById('list_product');
 
 			for (var i = 0; i < birds.payload.length; i++) {
-				
+
 				if (list_id[i] == birds.payload[i].id) {
 					console.log('con cac');
 					ele.innerHTML = ele.innerHTML +
@@ -239,22 +238,38 @@
 {{!-- add san pham --}}
 
 <script>
+	/*function xoa phan tu trung trong mang*/
+
+	function unique_arr(arr) {
+		let newArr = arr.reduce(function (accumulator, element) {
+			if (accumulator.indexOf(element) === -1) {
+				accumulator.push(element)
+			}
+			return accumulator
+		}, [])
+		return newArr 
+	}
+
 	var list_id_product_1 = "";
 
 	localStorage.setItem("cache1", list_id_product_1);
 	function add_service_tocart(id_product) {
-		
+
 		//check xem bien list_id_product co may ma san pham thi hien thi list dssp
 		list_id_product_1 = localStorage.getItem("cache1");
-		console.log("list_id truoc khi pump: "+list_id_product_1+"");
+		console.log("list_id truoc khi pump: " + list_id_product_1 + "");
 		list_id_product_1 = list_id_product_1 + id_product + ',';
 		localStorage.setItem("cache1", list_id_product_1);
 
 		list_id_product_1 = list_id_product_1.split(',');
-		console.log("list_id sau khi pump: "+list_id_product_1+"");
+
+		console.log("list_id sau khi pump: " + list_id_product_1 + "");
+		list_id_product_1 = unique_arr(list_id_product_1);
 		/*list_view_product(list_id_product_1);*/
 		list_view_product(list_id_product_1);
 	}
+	/*unique_arr(list_id_product_1);
+	console.log("sau khi sua lai: " + list_id_product_1 + "");*/
 </script>
 
 {{!-- tim kiem --}}
