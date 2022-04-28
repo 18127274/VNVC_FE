@@ -12,6 +12,7 @@ const cors = require('cors');
 const Handlebars = require('handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 
+const {nanoid} = require('nanoid');
 
 /* https://sundara.herokuapp.com/
 

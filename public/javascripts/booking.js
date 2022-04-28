@@ -2,6 +2,15 @@
 
 /* http://localhost:8080/api/xemdonhang */
 
+/* var {nanoid} = require('nanoid'); */
+
+ import {nanoid} from '{nanoid}';
+/* const {nanoid} = require('nanoid'); */
+
+function get_nanoid(){
+  return "ok";
+}
+
 function get_allService(callback) {
   var array = [];
   GET('http://localhost:8081/api/sanpham').then(res =>
@@ -110,21 +119,6 @@ function Register_account_supplier(name, username, pass, phone, email, address, 
         alert("Đăng ký tài khoản thất bại");
       }
 
-    })
-  );
-}
-
-
-function add_product_into_cart(masanpham, makhachhang, soluong) {
-  POST('http://localhost:8080/api/themgiohang', {
-    "maSP": masanpham,
-    "maKH": makhachhang,
-    "sl": soluong
-
-  }).then(res =>
-    res.json().then(data => {
-      console.log(data);
-    
     })
   );
 }
@@ -314,6 +308,33 @@ function get_allhub(id_city,callback) {
     })
   );
 }
+
+function add_product_into_cart(coookie_id, hoten, gioitinh, sdt, email, diachi, ngaysinh, moiquanhe, dsmua, phanloaids, tinhthanh, quanhuyen, phuongxa, trungtam, ngaytiem)
+{
+  POST('http://localhost:8888/cart/add', {
+    "cookie_id": coookie_id,
+    "HoTen": hoten,
+    "GioiTinh": gioitinh,
+    "SDT": sdt,
+    "Email": email,
+    "DiaChi": diachi,
+    "NgaySinh": ngaysinh,
+    "MoiQH": moiquanhe,
+    "DSMua": dsmua,
+    "PhanLoaiDS": phanloaids,
+    "TinhThanh_ID": tinhthanh,
+    "QuanHuyen_ID": quanhuyen,
+    "PhuongXa_ID": phuongxa,
+    "TrungTam_ID": trungtam,
+    "NgayMuonTiem": ngaytiem
+  }).then(res =>
+    res.json().then(data => {
+      console.log(data);
+    })
+  );
+}
+
+
 
 
 

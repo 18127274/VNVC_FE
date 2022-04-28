@@ -1,0 +1,44 @@
+{{!--
+<script type="module" src="../public/javascripts/helper.js"> </script> --}}
+
+
+<script type="text/javascript" src="/public/javascripts/helper.js"> </script>
+
+
+{{!--
+<script type="text/javascript">
+    import { get_nanoid } from "../public/javascripts/helper.js";
+</script> --}}
+
+
+<script type="module">
+    import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
+    /*import { get_nanoid } from "/public/javascripts/helper.js";
+    import { nanoid } from "nanoid";*/
+    var x = nanoid();
+    console.log(x);
+
+
+</script>
+
+
+
+{{!--
+<script type="module">
+    var { nanoid } = require('nanoid');
+
+
+
+</script> --}}
+
+
+{{!--
+<script type="text/javascripts">
+     import {nanoid} from '{nanoid}';
+    const {nanoid} = require('nanoid');
+    var {nanoid} = require('nanoid');
+
+    var makh = nanoid();
+    console.log(makh);
+    console.log("concacgivay");
+</script> --}}

@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/stylebutton.css" />
 <img class="card-img" src="/Header.png" alt="..." />
+<script src="../javascripts/booking.js"> </script>
 
 <!--introservice-->
 <!--<header class="py-5 bg-light border-bottom mb-4">
@@ -250,6 +251,7 @@
 
 <script>
 	/*hien thi cac tinh thanh de chon*/
+
 	get_allcity((result) => {
 		var birds = result;
 		var ele = document.getElementById('city');
@@ -271,10 +273,54 @@
 	});
 </script>
 
+{{!-- <script type="text/javascript">
+	const { nanoid } = require('nanoid');
+	var {nanoid} = require('nanoid');
+</script> --}}
 
 
 
 
+<script>
+	var form = document.getElementById('add1');
+	form.addEventListener('submit', function (event) {
+		event.preventDefault();
+		var coookie_id = nanoid();
+		var list_dsmua = localStorage.getItem("list_arr_product");
+		var phanloaids = 0;
+		var hoten = document.getElementById('name').value;
+		var ngaysinh = document.getElementById('dateofbird').value;
+		var gioitinh = document.getElementById('gender').value;
+		var moiquanhe = document.getElementById('relationship').value;
+		var sdt = document.getElementById('phone').value;
+		var email = document.getElementById('email').value;
+		var diachi = document.getElementById('address').value;
+		var tinhthanh = document.getElementById('city').value;
+		var quanhuyen = document.getElementById('hometown').value;
+		var phuongxa = document.getElementById('wards').value;
+		var tinhthanhtiem = document.getElementById('address_tiem').value;
+		var trungtam = document.getElementById('hub').value;
+		var ngaytiem = document.getElementById('date').value;
+
+		console.log(coookie_id);
+		console.log(list_dsmua);
+		console.log(hoten);
+		console.log(gioitinh);
+		console.log(sdt);
+		console.log(email);
+		console.log(diachi);
+		console.log(ngaysinh);
+		console.log(moiquanhe);
+		console.log(tinhthanh);
+		console.log(quanhuyen);
+		console.log(phuongxa);
+		console.log(tinhthanhtiem);
+		console.log(trungtam);
+		console.log(ngaytiem);
+	    add_product_into_cart(coookie_id, hoten, gioitinh, sdt, email, diachi, ngaysinh, moiquanhe, list_dsmua, phanloaids, tinhthanh, quanhuyen, phuongxa, trungtam, ngaytiem);
+	});
+
+</script>
 
 
 
