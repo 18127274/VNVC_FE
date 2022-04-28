@@ -74,7 +74,7 @@ function add_branch(name, phone, address) {
 }
 
 
-function add_booking(magh, phiship) {
+/* function add_booking(magh, phiship) {
     console.log(magh);
     console.log(phiship);
     POST('http://localhost:8080/api/themdonhang', {
@@ -91,7 +91,7 @@ function add_booking(magh, phiship) {
             }
         })
     );
-}
+} */
 
 
 function getServices1() {

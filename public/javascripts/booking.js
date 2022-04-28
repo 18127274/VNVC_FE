@@ -312,6 +312,66 @@ function get_allhub(id_city, callback) {
   );
 }
 
+function get_allhub1(callback) {
+  var array = [];
+
+  GET('http://localhost:8888/location/get_all_trungtam').then(res =>
+    res.json().then(data => {
+
+      var template = $('#service-table').html();
+      var compiled = Handlebars.compile(template);
+
+      var contextualHtml = compiled({ allservices: data });
+      $('#allservices').html(contextualHtml);
+      array = data;
+
+      return callback(array);
+    })
+  );
+}
+
+
+
+function list_view_cus(id_city, callback) {
+  console.log(id_city);
+  var array = [];
+  GET('http://localhost:8888/cart/get?cookie_id=' + id_city).then(res =>
+    res.json().then(data => {
+
+      var template = $('#service-table').html();
+      var compiled = Handlebars.compile(template);
+
+      var contextualHtml = compiled({ allservices: data });
+      $('#allservices').html(contextualHtml);
+      array = data;
+      console.log(data);
+      return callback(array);
+    })
+  );
+}
+
+function list_view_cus1(id_city, callback) {
+  console.log(id_city);
+  var array = [];
+  GET('http://localhost:8888/booking/get_detail_booking/' + id_city).then(res =>
+    res.json().then(data => {
+
+      var template = $('#service-table').html();
+      var compiled = Handlebars.compile(template);
+
+      var contextualHtml = compiled({ allservices: data });
+      $('#allservices').html(contextualHtml);
+      array = data;
+      console.log(data);
+      return callback(array);
+    })
+  );
+}
+
+
+
+
+
 function add_product_into_cart(coookie_id, hoten, gioitinh, sdt, email, diachi, ngaysinh, moiquanhe, dsmua, phanloaids, tinhthanh, quanhuyen, phuongxa, trungtam, ngaytiem) {
   POST('http://localhost:8888/cart/add', {
     "cookie_id": coookie_id,
@@ -339,7 +399,31 @@ function add_product_into_cart(coookie_id, hoten, gioitinh, sdt, email, diachi, 
   );
 }
 
+function add_booking(ptthanhtoan, ttthanhtoan, ngaylapdon, phanloaidh, hoten, email, sdt, socmnd, diachi, tinhthanh, quanhuyen, phuongxa, cookie_id) {
+  POST('http://localhost:8888/booking/add_booking', {
+    "PhuongThuc": ptthanhtoan,
+    "TinhTrangThanhToan": ttthanhtoan,
+    "NgayLapDon": ngaylapdon,
+    "PhanLoaiDH": phanloaidh,
+    "NguoiLH": {
+      "HoTen": hoten,
+      "Email": email,
+      "SDT": sdt,
+      "CMND": socmnd,
+      "DiaChi": diachi,
+      "TinhThanh_ID": tinhthanh,
+      "QuanHuyen_ID": quanhuyen,
+      "PhuongXa_ID": phuongxa
+    },
+    "CookieID": cookie_id
 
+  }).then(res =>
+    res.json().then(data => {
+      console.log(data);
+    })
+  );
+}
+http://localhost:8888/booking/add_booking
 
 
 

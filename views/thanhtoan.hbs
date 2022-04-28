@@ -26,100 +26,100 @@
 
 				<div class="row">
 
-<form class="row g-3">
-<h3><b>THÔNG TIN NGƯỜI TIÊM</b></h3>
-  <div class="col-md-6">
-    <label for="validationDefault01" class="form-label"><b>Họ và tên *</b></label>
-    <input type="text" class="form-control" id="validationDefault01"  required>
-  </div>
-  <div class="col-md-6">
-    <label for="validationDefault01" class="form-label"><b>Số diện thoại *</b></label>
-    <input type="text" class="form-control" id="validationDefault01"  required>
-  </div>
-  <div class="col-md-6">
-    <label for="validationDefault01" class="form-label"><b>Email *</b></label>
-    <input type="text" class="form-control" id="validationDefault01"  required>
-  </div>
-  <div class="col-md-6">
-    <label for="validationDefault01" class="form-label"><b>CMND/CCCD/PASSPORT *</b></label>
-    <input type="text" class="form-control" id="validationDefault01"  required>
-  </div>
-  
-  <div class="col-md-12">
-    <label for="validationDefault08" class="form-label"><b>Địa chỉ *</b></label>
-    <input type="text" class="form-control" id="validationDefault03" required>
-  </div> 
+					<form class="row g-3" id="add2">
+						<h3><b>THÔNG TIN NGƯỜI TIÊM</b></h3>
+						<div class="col-md-6">
+							<label for="validationDefault01" class="form-label"><b>Họ và tên *</b></label>
+							<input type="text" class="form-control" id="name" required>
+						</div>
+						<div class="col-md-6">
+							<label for="validationDefault01" class="form-label"><b>Số diện thoại *</b></label>
+							<input type="text" class="form-control" id="phone" required>
+						</div>
+						<div class="col-md-6">
+							<label for="validationDefault01" class="form-label"><b>Email *</b></label>
+							<input type="text" class="form-control" id="email" required>
+						</div>
+						<div class="col-md-6">
+							<label for="validationDefault01" class="form-label"><b>CMND/CCCD/PASSPORT *</b></label>
+							<input type="text" class="form-control" id="socmnd" required>
+						</div>
 
-  <div class="col-md-4">
-    <label for="validationDefault05" class="form-label"><b>Tỉnh/ Thành *</b></label>
-    <select class="form-select" id="validationDefault04" required>
-      <option selected disabled value="">Choose...</option>
-      <option value="">...</option>
-	  
-    </select>
-  </div>
+						<div class="col-md-12">
+							<label for="validationDefault08" class="form-label"><b>Địa chỉ *</b></label>
+							<input type="text" class="form-control" id="address" required>
+						</div>
 
-  <div class="col-md-4">
-    <label for="validationDefault06" class="form-label"><b>Quận/ Huyện *</b></label>
-    <select class="form-select" id="validationDefault04" required>
-      <option selected disabled value="">Choose...</option>
-      <option value="">...</option>
-	  
-    </select>
-  </div>
+						<div class="col-md-4">
+							<label for="validationDefault05" class="form-label"><b>Tỉnh/ Thành *</b></label>
+							<select class="form-select" id="city" single onchange="validateSelectBox(this)">
+								<option selected disabled value="">Tỉnh/Thành</option>
 
-  <div class="col-md-4">
-    <label for="validationDefault07" class="form-label"><b>Phường/ Xã *</b></label>
-    <select class="form-select" id="validationDefault04" required>
-      <option selected disabled value="">Choose...</option>
-      <option value="">...</option>
-	  
-    </select>
-  </div>
-  
-  
+							</select>
+						</div>
 
-<h3><b>CHỌN PHƯƠNG THỨC THANH TOÁN</b></h3>
-  
-    <div class="col-md-12">
-    <label for="validationDefault07" class="form-label"><b>Hình thức thanh toán *</b></label>
-    <select class="form-select" id="validationDefault04" required>
-      <option selected disabled value="">Choose...</option>
-      <option value="">Thanh toán bằng thẻ nội địa (ATM)</option>
-      <option value="">Thanh toán bằng thẻ VISA/MASTER/JCB</option>
-      <option value="">Thanh toán bằng thẻ thành viên</option>
-	  <option value="">Thanh toán qua chuyển khoản</option>
-      <option value="">Thanh toán tại trung tâm</option>
-    </select>
-  </div>
-</form>
+						<div class="col-md-4">
+							<label for="validationDefault06" class="form-label"><b>Quận/ Huyện
+									*</b></label>
+							<select class="form-select" id="hometown" single onchange="validateSelectBox1(this)">
+
+								<option value="">Quận/Huyện</option>
+
+							</select>
+						</div>
+
+						<div class="col-md-4">
+							<label for="validationDefault07" class="form-label"><b>Phường/ Xã *</b></label>
+							<select class="form-select" id="wards" required>
+
+								<option value="">Phường/Xã</option>
+
+							</select>
+						</div>
 
 
 
 
+						<h3><b>CHỌN PHƯƠNG THỨC THANH TOÁN</b></h3>
+
+						<div class="col-md-12">
+							<label for="validationDefault07" class="form-label"><b>Hình thức thanh toán *</b></label>
+							<select class="form-select" id="hinhthucthanhtoan" required>
+								<option value="0">Thanh toán trực tiếp</option>
+								<option value="1">Thanh toán bằng thẻ tín dụng</option>
+							</select>
+						</div>
+						<div class="col-12">
+							<input type="submit" class="btn btn-primary" value="Xác nhận">
+						</div>
+					</form>
 
 
-<!-- -->
-</div>
+
+
+
+
+					<!-- -->
+				</div>
 
 			</div>
 			<!-- Blog entries-->
-<div class=" col-lg-4 py-5">
-	<div class="row ">
-		<h3><b>DANH SÁCH NGƯỜI TIÊM</b></h3>
-				<br>
-				<br>
-		<div class="col-12">
-			<form action="/datmuadangky">
-    				<button class="btn btn-primary" type="submit">Thanh toán</button>
-			</form>
-  		</div>
-	</div>
-				
-</div>
+			<div class=" col-lg-4 py-5">
+				<div class="row ">
+					<h3><b>DANH SÁCH NGƯỜI TIÊM</b></h3>
+					<br>
+					<br>
+					<div class="col-12">
+						<form id="add1">
+							<button class="btn btn-primary" type="submit">Thanh toán</button>
+						</form>
+					</div>
+				</div>
+
+			</div>
 
 
-			
+
 		</div>
 	</div>
 </div>
@@ -130,206 +130,199 @@
 		$(this).next('ul').slideToggle('500');
 		$(this).find('i').toggleClass('fa-minus fa-plus ')
 	});
-
-
-
-	/*ham xu ly anh*/
-	function Xulyanh(link) {
-		link = link.split('d/');
-		console.log(link);
-		link = link[1];
-		console.log(link);
-		link = link.split('/');
-		console.log(link);
-		link = link[0];
-		console.log(link);
-		return link;
-	}
 </script>
 
+<script language="javascript">
+
+	/*hien thi cac tinh thanh de chon*/
+
+	get_allcity((result) => {
+		var birds = result;
+		var ele = document.getElementById('city');
+		for (var i = 0; i <= birds.payload.length; i++) {
+			// POPULATE SELECT ELEMENT WITH JSON.
+			ele.innerHTML = ele.innerHTML +
+				'<option value="' + birds.payload[i].id + '">' + birds.payload[i].name + '</option>';
+		}
+	});
+
+	function validateSelectBox(obj) {
+
+		var options = obj.children;
+
+		// Biến lưu trữ các chuyên mục đa chọn
+		var html = '';
+		// lặp qua từng option và kiểm tra thuộc tính selected
+		for (var i = 0; i < options.length; i++) {
+			if (options[i].selected) {
+				html += options[i].value;
+			}
+		}
+
+		// hien thi quan huyen tuong ung voi thanh pho
+		document.getElementById('hometown').innerHTML = "";
+		get_allhometown(html, (result) => {
+			var birds = result;
+			var ele = document.getElementById('hometown');
+			for (var i = 0; i <= birds.payload.length; i++) {
+				// POPULATE SELECT ELEMENT WITH JSON.
+				ele.innerHTML = ele.innerHTML +
+					'<option value="' + birds.payload[i].id + '">' + birds.payload[i].name + '</option>';
+			}
+		});
+
+
+	}
+	function validateSelectBox1(obj) {
+		var options = obj.children;
+		// Biến lưu trữ các chuyên mục đa chọn
+		var html = '';
+		// lặp qua từng option và kiểm tra thuộc tính selected
+		for (var i = 0; i < options.length; i++) {
+			if (options[i].selected) {
+				html += options[i].value;
+			}
+		}
+		console.log(html);
+		/*hien thi cac phuong xa de chon*/
+		document.getElementById('wards').innerHTML = "";
+		get_allwards(html, (result) => {
+			var birds = result;
+			var ele = document.getElementById('wards');
+			for (var i = 0; i <= birds.payload.length; i++) {
+				// POPULATE SELECT ELEMENT WITH JSON.
+				ele.innerHTML = ele.innerHTML +
+					'<option value="' + birds.payload[i].id + '">' + birds.payload[i].name + '</option>';
+			}
+		});
+
+	}
+
+	function validateSelectBox2(obj) {
+		var options = obj.children;
+		// Biến lưu trữ các chuyên mục đa chọn
+		var html = '';
+		// lặp qua từng option và kiểm tra thuộc tính selected
+		for (var i = 0; i < options.length; i++) {
+			if (options[i].selected) {
+				html += options[i].value;
+			}
+		}
+		/*hien thi cac trung tam tiem de chon*/
+		document.getElementById('hub').innerHTML = "";
+		get_allhub(html, (result) => {
+			var birds = result;
+			var ele = document.getElementById('hub');
+			for (var i = 0; i <= birds.payload.length; i++) {
+				// POPULATE SELECT ELEMENT WITH JSON.
+				ele.innerHTML = ele.innerHTML +
+					'<option value="' + birds.payload[i].id + '">' + birds.payload[i].name + '</option>';
+			}
+		});
+
+	}
+
+</script>
 
 
 
 <script type='text/x-handlebars-template' id='service-table'></script>
 <script type='text/x-handlebars-template' id='service-table1'></script>
 <script type='text/x-handlebars-template' id='allservices'></script>
-
-
 <div id="all-r"></div>
-{{!-- them vao gio hang localStorage.setItem("senddata", JSON.stringify(b)); --}}
-<script>
-	var list_service = '';
-
-	function send_idservice(id) {
-		localStorage.setItem("send_data", id);
-		window.location.assign("http://localhost:8888/detail");
-
-	}
-</script>
-
-
-{{!-- function hien thi danh sach san pham theo loai san pham --}}
 
 <script>
-	function list_service_bycategory(id) {
-
-		document.getElementById("allservicess").innerHTML = "";
+	function list_view_cus2(id) {
 		console.log(id);
-		for (let i = 1; i < 20; i++) {
-			arr_img = arr_img + ',' + 's' + i + '.png';
-		}
-		arr_img = arr_img.split(',');
-		arr_img.shift();
+		// hien thi dc ten nguoi tiem, cac goi vac xin, trung tam tiem, tong tien
 
-		getlistservice_byidcategory(id, (result) => {
+		list_view_cus1(id, (result) => {
+		
+			document.getElementById("list_cus").innerHTML = "";
 			var birds = result;
-			var ele = document.getElementById('allservicess');
-			console.log(birds.length);
-			for (var i = 0; i < birds.length; i++) {
+			var ele = document.getElementById('list_cus');
 
-				var list_arr_service = "";
-				console.log("anh ne: " + birds[i].image);
+			for (var i = 0; i < birds.payload.length; i++) {
 				ele.innerHTML = ele.innerHTML +
 					"<div class=\"col-lg-6\">" +
 					"<div class=\"card mb-4\">" +
-					"<a href=\"#!\">" +
-					"<img class=\"card-img-top\" src=\"https://drive.google.com/uc?export=view&id="+Xulyanh(""+birds[i].image+"")+"\">" +
-					"</a>" +
+
 					"<div class=\"card-body\">" +
 
-					"<h2 class=\"card-title h4\">" + birds[i].tenSP + "</h2>" + birds[i].giaTien + '&nbsp' + "VNĐ" + "<br>" + "Số lượng còn lại: " + birds[i].sl +
-					"<br>" +
+					"<h2 class=\"card-title h4\">" + birds.payload[i].HoTen + "<br>" +
 
-					"<a class=\"w-55 btn btn-primary\" onclick=\"send_idservice(" + birds[i].id + ")\" id=\"detai\"> Chi tiết sản phẩm</a>" +
+					"<button class=\"w-45 btn btn-primary btn-lg\" type=\"submit\">" +
 
+
+					"</button>" +
 					"</div>" +
 					"</div>" +
 					"</div>";
 			}
-			document.getElementById("allservicess").innerHTML = ele.innerHTML;
-			console.log(ele);
-		});
-
-
-
-	}
-
-</script>
-
-<script>
-	var arr_img;
-	for (let i = 1; i < 20; i++) {
-		arr_img = arr_img + ',' + 's' + i + '.png';
-	}
-	arr_img = arr_img.split(',');
-	arr_img.shift();
-
-	get_allService((result) => {
-		var birds = result;
-		var ele = document.getElementById('allservicess');
-		console.log(birds.length);
-		for (var i = 0; i <= birds.length; i++) {
-
-			var list_arr_service = "";
-
-			for (let j = 0; j < result.length; j++) {
-
-				list_arr_service = list_arr_service + ',' + result[j].tenSP;
-			}
-			list_arr_service = list_arr_service.substr(1);
-
-			console.log(list_arr_service);
-			// POPULATE SELECT ELEMENT WITH JSON.
-			ele.innerHTML = ele.innerHTML +
-				"<div class=\"col-lg-6\">" +
-				"<div class=\"card mb-4\">" +
-				"<a href=\"https://drive.google.com/file/d/1d3XqbQdX_--6zWB0lmmNEnX64453yciP/view\">" +
-				"<img class=\"card-img-top\"  src=\"https://drive.google.com/uc?export=view&id="+Xulyanh(""+birds[i].image+"")+"\">" +
-				"</a>" +
-				"<div class=\"card-body\">" +
-
-				"<h2 class=\"card-title h4\">" + birds[i].tenSP + "</h2>" + birds[i].giaTien + "VNĐ" + "<br>" + "Số lượng còn lại: " + birds[i].sl + " " +
-				"<br>" +
-
-
-				"<br>" +
-				"<a class=\"w-55 btn btn-primary\" onclick=\"send_idservice(" + birds[i].id + ")\" id=\"detai\"> Chi tiết sản phẩm</a>" +
-
-				"</div>" +
-				"</div>" +
-				"</div>";
-
-
-		}
-		document.getElementById("allservicess").innerHTML = ele;
-	});
-</script>
-
-<script>
-	function search_service(name) {
-		document.getElementById("allservicess").innerHTML = "";
-		var temp_service = document.getElementById('search_service').value;
-		console.log(temp_service);
-		getServices_byname(temp_service, (result) => {
-			var birds = result;
-			var ele = document.getElementById('allservicess');
-			for (var i = 0; i <= birds.length; i++) {
-				// POPULATE SELECT ELEMENT WITH JSON.
-				ele.innerHTML = ele.innerHTML + "<div class=\"col-lg-6\">" +
-					"<div class=\"card mb-4\">" +
-					"<a href=\"#!\">" +
-					"<img class=\"card-img-top\" src=\"https://drive.google.com/uc?export=view&id="+Xulyanh(""+birds[i].image+"")+"\">" +
-					"</a>" +
-					"<div class=\"card-body\">" +
-
-					"<h2 class=\"card-title h4\">" + birds[i].tenSP + "</h2>" + birds[i].giaTien + "VNĐ" + "<br>" + "Số lượng còn lại: " + birds[i].sl + " " +
-					"<br>" +
-
-
-					"<br>" +
-					"<a class=\"w-55 btn btn-primary\" onclick=\"send_idservice(" + birds[i].id + ")\" id=\"detai\"> Chi tiết sản phẩm</a>" +
-
-					"</div>" +
-					"</div>" +
-					"</div>";
-			}
-			document.getElementById("allservicess").innerHTML = ele;
+			/*"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart(" + birds.payload[0].id + ")\" id=\"detai\" >Chọn</a>" +*/
+			document.getElementById("list_cus").innerHTML = ele.innerHTML;
 		});
 	}
 </script>
 
-
-
 <script>
-	var form = document.getElementById('add4');
+	var form = document.getElementById('add2');
 	form.addEventListener('submit', function (event) {
 		event.preventDefault();
-		search_service();
+		var cookie_id = localStorage.getItem("cookie_cart");
+		var hoten = document.getElementById('name').value;
+		var sdt = document.getElementById('phone').value;
+		var cmnd = document.getElementById('socmnd').value;
+		sdt = sdt.slice(3);
+		var email = document.getElementById('email').value;
+		var diachi = document.getElementById('address').value;
+		var tinhthanh = document.getElementById('city').value;
+		var quanhuyen = document.getElementById('hometown').value;
+		var phuongxa = document.getElementById('wards').value;
+		var hinhthuc = document.getElementById('hinhthucthanhtoan').value;
+
+		console.log(cookie_id);
+		console.log(hoten);
+		console.log(sdt);
+		console.log(cmnd);
+		console.log(email);
+		console.log(diachi);
+		console.log(tinhthanh);
+		console.log(quanhuyen);
+		console.log(phuongxa);
+		console.log(hinhthuc);
+
+		add_booking(hinhthuc, "0", Date(), "1", hoten, email, sdt, cmnd, diachi, tinhthanh, quanhuyen, phuongxa, cookie_id);
+
 	});
 
 </script>
+
+
+
+
 
 
 <script>
 	(function () {
-  'use strict'
+		'use strict'
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll('.needs-validation')
+		// Fetch all the forms we want to apply custom Bootstrap validation styles to
+		var forms = document.querySelectorAll('.needs-validation')
 
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
+		// Loop over them and prevent submission
+		Array.prototype.slice.call(forms)
+			.forEach(function (form) {
+				form.addEventListener('submit', function (event) {
+					if (!form.checkValidity()) {
+						event.preventDefault()
+						event.stopPropagation()
+					}
 
-        form.classList.add('was-validated')
-      }, false)
-    })
-})()
+					form.classList.add('was-validated')
+				}, false)
+			})
+	})()
 </script>
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/styles2.css" />

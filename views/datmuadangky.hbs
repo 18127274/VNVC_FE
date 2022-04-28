@@ -141,20 +141,19 @@
 			</div>
 			<!-- Blog entries-->
 			<div class=" col-lg-4 py-5">
-				<div class="row ">
-					<h3><b>DANH SÁCH NGƯỜI TIÊM</b></h3>
-					<br>
-					<br>
-					<div class="col-12">
-						<form action="/thanhtoan">
-							<button class="btn btn-primary" type="submit">Thanh toán</button>
-						</form>
-					</div>
+				<h3><b>DANH SÁCH NGƯỜI TIÊM</b></h3>
+				<div class="row " id="list_cus">
+
+
+				</div>
+				<div class="col-12">
+					<form action="/thanhtoan">
+	
+						<button class="btn btn-primary" type="submit">Thanh toán</button>
+					</form>
 				</div>
 
 			</div>
-
-
 
 		</div>
 	</div>
@@ -249,6 +248,39 @@
 
 </script>
 
+<script>
+	function list_view_cus1(id) {
+		console.log(id);
+		// hien thi dc ten nguoi tiem, cac goi vac xin, trung tam tiem, tong tien
+
+		list_view_cus(id, (result) => {
+		
+			document.getElementById("list_cus").innerHTML = "";
+			var birds = result;
+			var ele = document.getElementById('list_cus');
+
+			for (var i = 0; i < birds.payload.length; i++) {
+				ele.innerHTML = ele.innerHTML +
+					"<div class=\"col-lg-6\">" +
+					"<div class=\"card mb-4\">" +
+
+					"<div class=\"card-body\">" +
+
+					"<h2 class=\"card-title h4\">" + birds.payload[i].HoTen + "<br>" +
+
+					"<button class=\"w-45 btn btn-primary btn-lg\" type=\"submit\">" +
+
+
+					"</button>" +
+					"</div>" +
+					"</div>" +
+					"</div>";
+			}
+			/*"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart(" + birds.payload[0].id + ")\" id=\"detai\" >Chọn</a>" +*/
+			document.getElementById("list_cus").innerHTML = ele.innerHTML;
+		});
+	}
+</script>
 
 <script type='text/x-handlebars-template' id='service-table'></script>
 <script type='text/x-handlebars-template' id='service-table1'></script>
@@ -299,6 +331,7 @@
 	form.addEventListener('submit', function (event) {
 		event.preventDefault();
 		var coookie_id = get_nanoid();
+		localStorage.setItem("cookie_cart", coookie_id);
 		var list_dsmua = localStorage.getItem("list_arr_product");
 		var phanloaids = 0;
 		var hoten = document.getElementById('name').value;
@@ -315,7 +348,7 @@
 		var tinhthanhtiem = document.getElementById('address_tiem').value;
 		var trungtam = document.getElementById('hub').value;
 		var ngaytiem = document.getElementById('date').value;
-		
+
 		console.log(coookie_id);
 		console.log(list_dsmua);
 		console.log(hoten);
@@ -332,6 +365,7 @@
 		console.log(trungtam);
 		console.log(ngaytiem);
 		add_product_into_cart(coookie_id, hoten, gioitinh, sdt, email, diachi, ngaysinh, moiquanhe, list_dsmua, phanloaids, tinhthanh, quanhuyen, phuongxa, trungtam, ngaytiem);
+		list_view_cus1(coookie_id);
 	});
 
 </script>
