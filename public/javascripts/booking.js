@@ -4,12 +4,15 @@
 
 /* var {nanoid} = require('nanoid'); */
 
- import {nanoid} from '{nanoid}';
+/*  import {nanoid} from '{nanoid}'; */
+
 /* const {nanoid} = require('nanoid'); */
 
-function get_nanoid(){
-  return "ok";
-}
+
+
+/* import {nanoid} from 'nanoid' */
+
+
 
 function get_allService(callback) {
   var array = [];
@@ -28,7 +31,7 @@ function get_allService(callback) {
   );
 }
 
-function view_cartof_customer(id_cus,callback) {
+function view_cartof_customer(id_cus, callback) {
   var array = [];
   GET('http://localhost:8080/api/xemgiohang/' + id_cus).then(res =>
     res.json().then(data => {
@@ -151,11 +154,11 @@ function getlistservice_byidcategory(id, callback) {
 
       var template = $('#service-table').html();
       var compiled = Handlebars.compile(template);
-      
+
       var contextualHtml = compiled({ allservices: data });
       $('#allservices').html(contextualHtml);
       array = data;
-      
+
       return callback(array);
     })
   );
@@ -237,7 +240,7 @@ function get_allcity1(callback) {
 
 
 
-function get_allhometown(id_city,callback) {
+function get_allhometown(id_city, callback) {
   var array = [];
 
   GET('http://localhost:8888/location/get_quanhuyen_tinhthanh/' + id_city).then(res =>
@@ -255,7 +258,7 @@ function get_allhometown(id_city,callback) {
   );
 }
 
-function get_allwards(id_district,callback) {
+function get_allwards(id_district, callback) {
   var array = [];
 
   GET('http://localhost:8888/location/get_phuongxa_quanhuyen/' + id_district).then(res =>
@@ -291,7 +294,7 @@ function get_allcity_tiem(callback) {
   );
 }
 
-function get_allhub(id_city,callback) {
+function get_allhub(id_city, callback) {
   var array = [];
 
   GET('http://localhost:8888/location/get_trungtam_tinhthanh/' + id_city).then(res =>
@@ -309,24 +312,26 @@ function get_allhub(id_city,callback) {
   );
 }
 
-function add_product_into_cart(coookie_id, hoten, gioitinh, sdt, email, diachi, ngaysinh, moiquanhe, dsmua, phanloaids, tinhthanh, quanhuyen, phuongxa, trungtam, ngaytiem)
-{
+function add_product_into_cart(coookie_id, hoten, gioitinh, sdt, email, diachi, ngaysinh, moiquanhe, dsmua, phanloaids, tinhthanh, quanhuyen, phuongxa, trungtam, ngaytiem) {
   POST('http://localhost:8888/cart/add', {
     "cookie_id": coookie_id,
-    "HoTen": hoten,
-    "GioiTinh": gioitinh,
-    "SDT": sdt,
-    "Email": email,
-    "DiaChi": diachi,
-    "NgaySinh": ngaysinh,
-    "MoiQH": moiquanhe,
-    "DSMua": dsmua,
-    "PhanLoaiDS": phanloaids,
-    "TinhThanh_ID": tinhthanh,
-    "QuanHuyen_ID": quanhuyen,
-    "PhuongXa_ID": phuongxa,
-    "TrungTam_ID": trungtam,
-    "NgayMuonTiem": ngaytiem
+    "NguoiDky": {
+      "HoTen": hoten,
+      "GioiTinh": gioitinh,
+      "SDT": sdt,
+      "Email": email,
+      "DiaChi": diachi,
+      "NgaySinh": ngaysinh,
+      "MoiQH": moiquanhe,
+      "DSMua": dsmua,
+      "PhanLoaiDS": phanloaids,
+      "TinhThanh_ID": tinhthanh,
+      "QuanHuyen_ID": quanhuyen,
+      "PhuongXa_ID": phuongxa,
+      "TrungTam_ID": trungtam,
+      "NgayMuonTiem": ngaytiem
+    }
+
   }).then(res =>
     res.json().then(data => {
       console.log(data);

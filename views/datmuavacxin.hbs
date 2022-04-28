@@ -1,11 +1,22 @@
 <script src="../javascripts/api.js"></script>
-<script type="text/javascript" src="../javascripts/booking.js"> </script>
+
+{{!-- <script type="text/javascript" src="../javascripts/booking.js"> </script> --}}
+
 <script type="text/javascript" src="../javascripts/cart.js"> </script>
 <script type="text/javascript" src="../javascripts/nc_service.js"> </script>
 <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/stylebutton.css" />
 <img class="card-img" src="/Header.png" alt="..." />
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../javascripts/booking.js"> </script>
+
+
+
+
+
+
+
 <!--introservice-->
 <!--<header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
@@ -167,6 +178,7 @@
 
 		list_all_service((result) => {
 			var birds = result;
+			console.log(result);
 			var ele = document.getElementById('allservicess');
 			for (var i = 0; i < birds.payload.length; i++) {
 
