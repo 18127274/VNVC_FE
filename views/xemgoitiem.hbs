@@ -80,19 +80,49 @@
 
 				</div>
 				<!-- next page-->
-				<nav aria-label="Pagination">
-					<hr class="my-0" />
-					<ul class="pagination justify-content-center my-4">
-						<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"
-								aria-disabled="true">Newer</a></li>
-						<li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
-						<li class="page-item"><a class="page-link" href="#!">2</a></li>
-						<li class="page-item"><a class="page-link" href="#!">3</a></li>
-						<li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
-						<li class="page-item"><a class="page-link" href="#!">15</a></li>
-						<li class="page-item"><a class="page-link" href="#!">Older</a></li>
-					</ul>
-				</nav>
+				  <div id="layoutSidenav_content">
+            <div class="container-fluid px-4">
+                
+                <!-- delete row -->              
+                <script type='text/x-handlebars-template' id='service-table'> </script>
+                <script type='text/x-handlebars-template' id='data_table_service'> </script>
+            
+
+                
+              
+                <!-- Table -->
+                <div class="card shadow mb-2">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">DANH MỤC GÓI VẮC XIN CHO TRẺ 0-9 THÁNG</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Phòng bệnh</th>
+
+                                        <th>Tên Vắc Xin</th>
+                                        <th>Nước sản xuất</th>
+
+                                        
+                                    </tr>
+                                </thead>
+
+                                <tbody id="data_table_service">
+
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>              
+        </div>
 			</div>
 
 		</div>
@@ -302,3 +332,5 @@
 
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/styles2.css" />
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">

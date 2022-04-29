@@ -132,8 +132,24 @@
 									tiêm</b></label>
 							<input type="date" class="form-control" id="date" required>
 						</div>
-						<input type="submit" class="w-45 btn btn-primary" value="Tiếp tục">
+						<!-- Button trigger modal -->	
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Tiếp tục</button>					
 					</form>
+					
+
+					
+
+
+
+
+
+
+
+
+
+
+
+
 
 					<!-- -->
 				</div>
@@ -159,7 +175,32 @@
 	</div>
 </div>
 
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
 
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+			<h4 class="modal-title">ĐÃ THÊM THÀNH CÔNG VÀO DANH SÁCH NGƯỜI TIÊM</h4>
+          <p>Quý khách vẫn có thể thêm 4 người tiêm nữa vào danh sách đăng ký.</p>
+		  
+			  <button class="btn btn-primary" type="submit">Thêm người tiêm</button>
+		  
+		  
+		  
+			  <button class="btn btn-primary" type="submit">Thanh toán</button>
+		
+		 
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
 <script>
 	$('#category-tabs li a').click(function () {
 		$(this).next('ul').slideToggle('500');
@@ -394,3 +435,10 @@
 	})()
 </script>
 <link rel="stylesheet" type="text/css" href="/stylesheets/styles2.css" />
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" ></script>
+
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
