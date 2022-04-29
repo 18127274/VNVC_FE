@@ -235,7 +235,7 @@
 	function list_view_cus2(id) {
 		console.log(id);
 		// hien thi dc ten nguoi tiem, cac goi vac xin, trung tam tiem, tong tien
-
+		// id_donhang
 		list_view_cus1(id, (result) => {
 		
 			document.getElementById("list_cus").innerHTML = "";
@@ -249,7 +249,7 @@
 
 					"<div class=\"card-body\">" +
 
-					"<h2 class=\"card-title h4\">" + birds.payload[i].HoTen + "<br>" +
+					"<h2 class=\"card-title h4\">" + birds.payload[i].DonHang.Nguoi + "<br>" +
 
 					"<button class=\"w-45 btn btn-primary btn-lg\" type=\"submit\">" +
 
@@ -279,8 +279,14 @@
 		var tinhthanh = document.getElementById('city').value;
 		var quanhuyen = document.getElementById('hometown').value;
 		var phuongxa = document.getElementById('wards').value;
-		var hinhthuc = document.getElementById('hinhthucthanhtoan').value;
+		var ptthanhtoan = document.getElementById('hinhthucthanhtoan').value;
+		ptthanhtoan = parseInt(ptthanhtoan, 10);
+		var ngaylapdon = Date();
 
+		var phanloaidh = "0";
+		var ttthanhtoan = "1";
+		phanloaidh = parseInt(phanloaidh, 10);
+		ttthanhtoan = parseInt(ttthanhtoan, 10);
 		console.log(cookie_id);
 		console.log(hoten);
 		console.log(sdt);
@@ -290,10 +296,16 @@
 		console.log(tinhthanh);
 		console.log(quanhuyen);
 		console.log(phuongxa);
-		console.log(hinhthuc);
+		console.log("type hinh thuc", typeof(ptthanhtoan));
+		console.log("type phan loai dh", typeof(phanloaidh));
+		console.log("type tttt", typeof(ttthanhtoan));
+		console.log(ptthanhtoan);
+		console.log(ngaylapdon);
+		console.log("type ngaylapdon", typeof(ngaylapdon));
 
-		add_booking(hinhthuc, "0", Date(), "1", hoten, email, sdt, cmnd, diachi, tinhthanh, quanhuyen, phuongxa, cookie_id);
-
+		add_booking(ptthanhtoan, ttthanhtoan, ngaylapdon, phanloaidh, hoten, email, sdt, cmnd, diachi, tinhthanh, quanhuyen, phuongxa, cookie_id);
+		localStorage.getItem("id_donhang");
+		list_view_cus2(localStorage.getItem("id_donhang"));
 	});
 
 </script>

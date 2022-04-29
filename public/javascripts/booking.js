@@ -398,8 +398,8 @@ function add_product_into_cart(coookie_id, hoten, gioitinh, sdt, email, diachi, 
     })
   );
 }
-
-function add_booking(ptthanhtoan, ttthanhtoan, ngaylapdon, phanloaidh, hoten, email, sdt, socmnd, diachi, tinhthanh, quanhuyen, phuongxa, cookie_id) {
+         /* add_booking(ptthanhtoan, ttthanhtoan, ngaylapdon, phanloaidh, hoten, email, sdt, cmnd, diachi, tinhthanh, quanhuyen, phuongxa, cookie_id); */
+function add_booking(ptthanhtoan, ttthanhtoan, ngaylapdon, phanloaidh, hoten, email, sdt, cmnd, diachi, tinhthanh, quanhuyen, phuongxa, cookie_id) {
   POST('http://localhost:8888/booking/add_booking', {
     "PhuongThuc": ptthanhtoan,
     "TinhTrangThanhToan": ttthanhtoan,
@@ -409,7 +409,7 @@ function add_booking(ptthanhtoan, ttthanhtoan, ngaylapdon, phanloaidh, hoten, em
       "HoTen": hoten,
       "Email": email,
       "SDT": sdt,
-      "CMND": socmnd,
+      "CMND": cmnd,
       "DiaChi": diachi,
       "TinhThanh_ID": tinhthanh,
       "QuanHuyen_ID": quanhuyen,
@@ -420,10 +420,32 @@ function add_booking(ptthanhtoan, ttthanhtoan, ngaylapdon, phanloaidh, hoten, em
   }).then(res =>
     res.json().then(data => {
       console.log(data);
+      localStorage.setItem("id_donhang", data.payload.id);
+      console.log(data.payload.id);
     })
   );
 }
-http://localhost:8888/booking/add_booking
+
+function update_status_booking(madh, tttt) {
+   PUT('http://localhost:8888/booking/update_payment', {
+     "MaDH": madh,
+     "TinhTrangThanhToan": tttt
+   }).then(res =>
+    res.json().then(data => {
+      console.log(data);
+      if (data != "") {
+        alert("Cập nhật thành công");
+        console.log(data.lenght);
+      }
+      else {
+        alert("Cập nhật thất bại");
+      }
+
+
+    })
+  );
+}
+
 
 
 
