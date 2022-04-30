@@ -105,10 +105,10 @@
 			</div>
 			<!-- Blog entries-->
 			<div class=" col-lg-4 py-5">
-				<div class="row ">
-					<h3><b>DANH SÁCH NGƯỜI TIÊM</b></h3>
-					<br>
-					<br>
+				<h3><b>DANH SÁCH NGƯỜI TIÊM</b></h3>
+				<div class="row " id="dsngtiem">
+
+
 					<div class="col-12">
 						<form id="add1">
 							<button class="btn btn-primary" type="submit">Thanh toán</button>
@@ -232,35 +232,49 @@
 <div id="all-r"></div>
 
 <script>
-	function list_view_cus2(id) {
-		console.log(id);
+	function list_view_cus2() {
 		// hien thi dc ten nguoi tiem, cac goi vac xin, trung tam tiem, tong tien
-		// id_donhang
-		list_view_cus1(id, (result) => {
-		
-			document.getElementById("list_cus").innerHTML = "";
-			var birds = result;
+		id_dh = localStorage.getItem("id_donhang");
+		console.log(localStorage.getItem("id_donhang"));
+		console.log("------------------------------------tao vao roi ne");
+
+		ham_getdetailbooking_duatren_madonhang(id_dh, (result) => {
+			console.log("chi tietdon hang", result);
 			var ele = document.getElementById('list_cus');
+			//xy ly di vao dschitiet 
+			ham_timtengoivacxintheoid((result1) => {
+				for (var i = 0; i < result.payload.DSChiTiet.length; i++) { //vao trong all dschitiet
+					for (var j = 0; j < result.payload.DSChiTiet[i].DSMua.length; i++) { // vao trong dsmua 
+						for (var k = 0; k < result1.payload.length; k++) {//duyet qua mang all goi vac xin
+						console.log(i);
+						console.log(j);
+						console.log(k);
+						console.log("do dai all dschitiet: ", result.payload.DSChiTiet.length);
+						console.log("do dai cua 1 ds mua: ",  result.payload.DSChiTiet[i].DSMua.length);
+						console.log("do dai mang all vacxin: ", result1.payload.length);
+						//doan code nay check xem sao ko hien thi ra dc dsmua :)))))))
+						console.log("id trong ds mua: ", result.payload.DSChiTiet[i].DSmua[j]);
+						console.log("id trong get all vacxin: ", result1.payload[k].id);
+						
+					}
+					}
+					console.log(result.payload.DSChiTiet[i].DSMua[0].length);
+					//console.log(result.payload.DSChiTiet.length);
+					//console.log("chi tiet goi tiem", result1);
+					//console.log(result.payload.DSChiTiet.length);
+					//console.log(i);
+					//console.log(result.payload.DSChiTiet[i]);
+					//console.log("do dai cua ds mua: ", result.payload.DSChiTiet.length);
+					//console.log("do dai cua all goi vac xin: ", result1.payload.length);
+					for (var k = 0; k < result1.payload.length; k++) {//duyet qua mang all goi vac xin
+						console.log("id trong ds mua: ", result.payload.DSChiTiet[i].DSmua[k]);
+						console.log("id trong get all vacxin: ", result1.payload[k].id);
+					}
 
-			for (var i = 0; i < birds.payload.length; i++) {
-				ele.innerHTML = ele.innerHTML +
-					"<div class=\"col-lg-6\">" +
-					"<div class=\"card mb-4\">" +
+				}
 
-					"<div class=\"card-body\">" +
+			})
 
-					"<h2 class=\"card-title h4\">" + birds.payload[i].DonHang.Nguoi + "<br>" +
-
-					"<button class=\"w-45 btn btn-primary btn-lg\" type=\"submit\">" +
-
-
-					"</button>" +
-					"</div>" +
-					"</div>" +
-					"</div>";
-			}
-			/*"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart(" + birds.payload[0].id + ")\" id=\"detai\" >Chọn</a>" +*/
-			document.getElementById("list_cus").innerHTML = ele.innerHTML;
 		});
 	}
 </script>
@@ -287,7 +301,7 @@
 		var ttthanhtoan = "1";
 		phanloaidh = parseInt(phanloaidh, 10);
 		ttthanhtoan = parseInt(ttthanhtoan, 10);
-		console.log(cookie_id);
+		/* console.log(cookie_id);
 		console.log(hoten);
 		console.log(sdt);
 		console.log(cmnd);
@@ -296,17 +310,18 @@
 		console.log(tinhthanh);
 		console.log(quanhuyen);
 		console.log(phuongxa);
-		console.log("type hinh thuc", typeof(ptthanhtoan));
-		console.log("type phan loai dh", typeof(phanloaidh));
-		console.log("type tttt", typeof(ttthanhtoan));
+		console.log("type hinh thuc", typeof (ptthanhtoan));
+		console.log("type phan loai dh", typeof (phanloaidh));
+		console.log("type tttt", typeof (ttthanhtoan));
 		console.log(ptthanhtoan);
 		console.log(ngaylapdon);
-		console.log("type ngaylapdon", typeof(ngaylapdon));
+		console.log("type ngaylapdon", typeof (ngaylapdon)); */
 
 		add_booking(ptthanhtoan, ttthanhtoan, ngaylapdon, phanloaidh, hoten, email, sdt, cmnd, diachi, tinhthanh, quanhuyen, phuongxa, cookie_id);
-		localStorage.getItem("id_donhang");
-		list_view_cus2(localStorage.getItem("id_donhang"));
+
+
 	});
+
 
 </script>
 
@@ -338,3 +353,5 @@
 </script>
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/styles2.css" />
+
+

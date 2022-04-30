@@ -37,34 +37,28 @@
 
 					<!-- Categories widget-->
 
-					<div class="title"><strong>Category</strong></div>
+					<div class="title"><strong>Danh mục</strong></div>
+
 					<ul id="category-tabs">
-						<li><a href="javascript:void" class="main-category">Đồ ăn</a>
-							<ul class="sub-category-tabs">
-								<li><a href="javascript:void" onclick="list_service_bycategory(1)">Thịt</a></li>
-								<li><a href="javascript:void" onclick="list_service_bycategory(2)">Cá</a></li>
-								<li><a href="javascript:void" onclick="list_service_bycategory(3)">Rau củ</a></li>
-							</ul>
+						<li><a href="javascript:void" class="main-category" onclick="list_all_service1()">Tất cả</a>
+
 						</li>
 					</ul>
+
 					<ul id="category-tabs">
-						<li><a href="javascript:void" class="main-category">Nước uống</a>
-							<ul class="sub-category-tabs">
-								<li><a href="javascript:void">Pepsi</a></li>
-								<li><a href="javascript:void">Coca</a></li>
-								<li><a href="javascript:void">Rượu JS</a></li>
-							</ul>
+						<li><a href="javascript:void" class="main-category" href="javascript:void"
+								onclick="list_service_bycategory(2)">Vắc xin cho người trưởng thành</a>
+
 						</li>
 					</ul>
+
 					<ul id="category-tabs">
-						<li><a href="javascript:void" class="main-category">Đồ gia dụng, vệ sinh</a>
-							<ul class="sub-category-tabs">
-								<li><a href="javascript:void">Đồ gia dụng</a></li>
-								<li><a href="javascript:void">Đồ vệ sinh</a></li>
-								<li><a href="javascript:void">Mai Thúy</a></li>
-							</ul>
+						<li><a href="javascript:void" class="main-category" href="javascript:void"
+								onclick="list_service_bycategory(1)">Vắc xin cho trẻ em</a>
+
 						</li>
 					</ul>
+
 				</div>
 
 			</div>
@@ -80,49 +74,42 @@
 
 				</div>
 				<!-- next page-->
-				  <div id="layoutSidenav_content">
-            <div class="container-fluid px-4">
-                
-                <!-- delete row -->              
-                <script type='text/x-handlebars-template' id='service-table'> </script>
-                <script type='text/x-handlebars-template' id='data_table_service'> </script>
-            
+				<div id="layoutSidenav_content">
+					<div class="container-fluid px-4">
+						<!-- Table -->
+						<div class="card shadow mb-2">
+							<div class="card-header py-3">
+								<h6 class="m-0 font-weight-bold text-primary">DANH MỤC GÓI VẮC XIN CHO TRẺ 0-9 THÁNG
+								</h6>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
+										<thead>
+											<tr>
+												<th>STT</th>
+												<th>Phòng bệnh</th>
 
-                
-              
-                <!-- Table -->
-                <div class="card shadow mb-2">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">DANH MỤC GÓI VẮC XIN CHO TRẺ 0-9 THÁNG</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>STT</th>
-                                        <th>Phòng bệnh</th>
-
-                                        <th>Tên Vắc Xin</th>
-                                        <th>Nước sản xuất</th>
-
-                                        
-                                    </tr>
-                                </thead>
-
-                                <tbody id="data_table_service">
+												<th>Tên Vắc Xin</th>
+												<th>Nước sản xuất</th>
 
 
-                                </tbody>
+											</tr>
+										</thead>
 
-                            </table>
+										<tbody id="data_table_service">
 
-                        </div>
-                    </div>
-                </div>
 
-            </div>              
-        </div>
+										</tbody>
+
+									</table>
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
 			</div>
 
 		</div>
@@ -130,193 +117,65 @@
 </div>
 
 
-<script>
-	$('#category-tabs li a').click(function () {
-		$(this).next('ul').slideToggle('500');
-		$(this).find('i').toggleClass('fa-minus fa-plus ')
-	});
-
-
-
-	/*ham xu ly anh*/
-	function Xulyanh(link) {
-		link = link.split('d/');
-		console.log(link);
-		link = link[1];
-		console.log(link);
-		link = link.split('/');
-		console.log(link);
-		link = link[0];
-		console.log(link);
-		return link;
-	}
-</script>
-
 
 
 
 <script type='text/x-handlebars-template' id='service-table'></script>
 <script type='text/x-handlebars-template' id='service-table1'></script>
 <script type='text/x-handlebars-template' id='allservices'></script>
+<script type='text/x-handlebars-template' id='data_table_service'> </script>
 
-
-<div id="all-r"></div>
-{{!-- them vao gio hang localStorage.setItem("senddata", JSON.stringify(b)); --}}
+{{!-- hien thi tat ca san pham hien co --}}
 <script>
-	var list_service = '';
+	function list_all_service1() {
 
-	function send_idservice(id) {
-		localStorage.setItem("send_data", id);
-		window.location.assign("http://localhost:8888/detail");
+		document.getElementById("data_table_service").innerHTML = "";
 
+		list_all_service((result) => {
+			var birds = result;
+			console.log(result);
+			var ele = document.getElementById('data_table_service');
+			for (var i = 0; i < birds.payload.length; i++) {
+				ele.innerHTML = ele.innerHTML + "<tr>" +
+					"<td hidden>" + birds.payload[i].id + "</td>" +
+					"<td>" + birds.payload[i].Ten + "</td>" +
+					"<td>" + birds.payload[i].GiaTien + "</td></tr>";
+			}
+			/*"<a class=\"bi-cart-fill me-1\" onclick=\"add_service_tocart(" + birds.payload[0].id + ")\" id=\"detai\" >Chọn</a>" +*/
+			document.getElementById("data_table_service").innerHTML = ele.innerHTML;
+
+
+		});
 	}
-
-	var getCookies = function () {
-		var pairs = document.cookie.split(";");
-		var cookies = {};
-		for (var i = 0; i < pairs.length; i++) {
-			var pair = pairs[i].split("=");
-			cookies[(pair[0] + '').trim()] = unescape(pair.slice(1).join('='));
-		}
-		return cookies;
-	}
-
-	var myCookies = getCookies();
-	console.log(myCookies.secret); // "do not tell you"
-	console.log(document.cookie);
-
 </script>
+
+{{!-- hien thi san pham theo danh muc --}}
+<script>
+	function list_service_bycategory(id) {
+		console.log(id);
+		document.getElementById("data_table_service").innerHTML = "";
+		getlistservice_byidcategory(id, (result) => {
+			var birds = result;
+			console.log(result);
+			var ele = document.getElementById('data_table_service');
+
+			for (var i = 0; i < birds.payload.length; i++) {
+
+				ele.innerHTML = ele.innerHTML + "<tr>" +
+					"<td hidden>" + birds.payload[i].id + "</td>" +
+					"<td>" + birds.payload[i].Ten + "</td>" +
+					"<td>" + birds.payload[i].GiaTien + "</td></tr>";
+			}
+			document.getElementById("data_table_service").innerHTML = ele.innerHTML;
+		});
+	}
+</script>
+
 
 
 {{!-- function hien thi danh sach san pham theo loai san pham --}}
 
-<script>
-	function list_service_bycategory(id) {
 
-		document.getElementById("allservicess").innerHTML = "";
-		console.log(id);
-		for (let i = 1; i < 20; i++) {
-			arr_img = arr_img + ',' + 's' + i + '.png';
-		}
-		arr_img = arr_img.split(',');
-		arr_img.shift();
-
-		getlistservice_byidcategory(id, (result) => {
-			var birds = result;
-			var ele = document.getElementById('allservicess');
-			console.log(birds.length);
-			for (var i = 0; i < birds.length; i++) {
-
-				var list_arr_service = "";
-				console.log("anh ne: " + birds[i].image);
-				ele.innerHTML = ele.innerHTML +
-					"<div class=\"col-lg-6\">" +
-					"<div class=\"card mb-4\">" +
-					"<a href=\"#!\">" +
-					"<img class=\"card-img-top\" src=\"https://drive.google.com/uc?export=view&id=" + Xulyanh("" + birds[i].image + "") + "\">" +
-					"</a>" +
-					"<div class=\"card-body\">" +
-
-					"<h2 class=\"card-title h4\">" + birds[i].tenSP + "</h2>" + birds[i].giaTien + '&nbsp' + "VNĐ" + "<br>" + "Số lượng còn lại: " + birds[i].sl +
-					"<br>" +
-
-					"<a class=\"w-55 btn btn-primary\" onclick=\"send_idservice(" + birds[i].id + ")\" id=\"detai\"> Chi tiết sản phẩm</a>" +
-
-					"</div>" +
-					"</div>" +
-					"</div>";
-			}
-			document.getElementById("allservicess").innerHTML = ele.innerHTML;
-			console.log(ele);
-		});
-
-
-
-	}
-
-</script>
-
-<script>
-	var arr_img;
-	for (let i = 1; i < 20; i++) {
-		arr_img = arr_img + ',' + 's' + i + '.png';
-	}
-	arr_img = arr_img.split(',');
-	arr_img.shift();
-
-	get_allService((result) => {
-		var birds = result;
-		var ele = document.getElementById('allservicess');
-		console.log(birds.length);
-		for (var i = 0; i <= birds.length; i++) {
-
-			var list_arr_service = "";
-
-			for (let j = 0; j < result.length; j++) {
-
-				list_arr_service = list_arr_service + ',' + result[j].tenSP;
-			}
-			list_arr_service = list_arr_service.substr(1);
-
-			console.log(list_arr_service);
-			// POPULATE SELECT ELEMENT WITH JSON.
-			ele.innerHTML = ele.innerHTML +
-				"<div class=\"col-lg-6\">" +
-				"<div class=\"card mb-4\">" +
-				"<a href=\"https://drive.google.com/file/d/1d3XqbQdX_--6zWB0lmmNEnX64453yciP/view\">" +
-				"<img class=\"card-img-top\"  src=\"https://drive.google.com/uc?export=view&id=" + Xulyanh("" + birds[i].image + "") + "\">" +
-				"</a>" +
-				"<div class=\"card-body\">" +
-
-				"<h2 class=\"card-title h4\">" + birds[i].tenSP + "</h2>" + birds[i].giaTien + "VNĐ" + "<br>" + "Số lượng còn lại: " + birds[i].sl + " " +
-				"<br>" +
-
-
-				"<br>" +
-				"<a class=\"w-55 btn btn-primary\" onclick=\"send_idservice(" + birds[i].id + ")\" id=\"detai\"> Chi tiết sản phẩm</a>" +
-
-				"</div>" +
-				"</div>" +
-				"</div>";
-
-
-		}
-		document.getElementById("allservicess").innerHTML = ele;
-	});
-</script>
-
-<script>
-	function search_service(name) {
-		document.getElementById("allservicess").innerHTML = "";
-		var temp_service = document.getElementById('search_service').value;
-		console.log(temp_service);
-		getServices_byname(temp_service, (result) => {
-			var birds = result;
-			var ele = document.getElementById('allservicess');
-			for (var i = 0; i <= birds.length; i++) {
-				// POPULATE SELECT ELEMENT WITH JSON.
-				ele.innerHTML = ele.innerHTML + "<div class=\"col-lg-6\">" +
-					"<div class=\"card mb-4\">" +
-					"<a href=\"#!\">" +
-					"<img class=\"card-img-top\" src=\"https://drive.google.com/uc?export=view&id=" + Xulyanh("" + birds[i].image + "") + "\">" +
-					"</a>" +
-					"<div class=\"card-body\">" +
-
-					"<h2 class=\"card-title h4\">" + birds[i].tenSP + "</h2>" + birds[i].giaTien + "VNĐ" + "<br>" + "Số lượng còn lại: " + birds[i].sl + " " +
-					"<br>" +
-
-
-					"<br>" +
-					"<a class=\"w-55 btn btn-primary\" onclick=\"send_idservice(" + birds[i].id + ")\" id=\"detai\"> Chi tiết sản phẩm</a>" +
-
-					"</div>" +
-					"</div>" +
-					"</div>";
-			}
-			document.getElementById("allservicess").innerHTML = ele;
-		});
-	}
-</script>
 
 
 

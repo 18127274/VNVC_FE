@@ -1,6 +1,7 @@
 <script src="../javascripts/api.js"></script>
 
-{{!-- <script type="text/javascript" src="../javascripts/booking.js"> </script> --}}
+{{!--
+<script type="text/javascript" src="../javascripts/booking.js"> </script> --}}
 
 <script type="text/javascript" src="../javascripts/cart.js"> </script>
 <script type="text/javascript" src="../javascripts/nc_service.js"> </script>
@@ -109,9 +110,9 @@
 				</div>
 
 				<div class="col-12">
-					<form action="/datmuadangky">
-						<button class="btn btn-primary" type="submit">Đăng ký mũi tiêm</button>
-						
+					<form id="luu_cookie_id">
+						{{!-- <button class="btn btn-primary" type="submit">Đăng ký mũi tiêm</button> --}}
+						<input type="submit" class="btn btn-primary" value="Đăng ký mũi tiêm">
 					</form>
 				</div>
 
@@ -214,7 +215,7 @@
 	function list_view_product(list_id) {
 		console.log(list_id);
 		localStorage.setItem("list_arr_product", list_id);
-		
+
 		list_all_service_by_id(list_id, (result) => {
 			document.getElementById("list_product").innerHTML = "";
 			var birds = result;
@@ -260,7 +261,7 @@
 			}
 			return accumulator
 		}, [])
-		return newArr 
+		return newArr
 	}
 
 	var list_id_product_1 = "";
@@ -285,39 +286,7 @@
 	console.log("sau khi sua lai: " + list_id_product_1 + "");*/
 </script>
 
-{{!-- tim kiem --}}
-<script>
-	function search_service(name) {
-		document.getElementById("allservicess").innerHTML = "";
-		var temp_service = document.getElementById('search_service').value;
-		console.log(temp_service);
-		getServices_byname(temp_service, (result) => {
-			var birds = result;
-			var ele = document.getElementById('allservicess');
-			for (var i = 0; i <= birds.length; i++) {
-				// POPULATE SELECT ELEMENT WITH JSON.
-				ele.innerHTML = ele.innerHTML + "<div class=\"col-lg-6\">" +
-					"<div class=\"card mb-4\">" +
-					"<a href=\"#!\">" +
-					"<img class=\"card-img-top\" src=\"https://drive.google.com/uc?export=view&id=" + Xulyanh("" + birds[i].image + "") + "\">" +
-					"</a>" +
-					"<div class=\"card-body\">" +
 
-					"<h2 class=\"card-title h4\">" + birds[i].tenSP + "</h2>" + birds[i].giaTien + "VNĐ" + "<br>" + "Số lượng còn lại: " + birds[i].sl + " " +
-					"<br>" +
-
-
-					"<br>" +
-					"<a class=\"w-55 btn btn-primary\" onclick=\"send_idservice(" + birds[i].id + ")\" id=\"detai\"> Chi tiết sản phẩm</a>" +
-
-					"</div>" +
-					"</div>" +
-					"</div>";
-			}
-			document.getElementById("allservicess").innerHTML = ele;
-		});
-	}
-</script>
 
 
 
@@ -329,6 +298,20 @@
 	});
 </script>
 
+<script type="module">
+	import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js';
+	function get_nanoid() {
+		let x = nanoid();
+		return x;
+	}
+	var form = document.getElementById('luu_cookie_id');
+	form.addEventListener('submit', function (event) {
+		event.preventDefault();
+		var coookie_id = get_nanoid();
+		localStorage.setItem("cookie_cart", coookie_id);
+		window.location.assign("http://localhost:8889/datmuadangky"); 
+	});
+</script>
 
 
 

@@ -164,6 +164,10 @@ function getlistservice_byidcategory(id, callback) {
   );
 }
 
+
+
+
+
 function list_all_service(callback) {
   var array = [];
 
@@ -181,6 +185,9 @@ function list_all_service(callback) {
     })
   );
 }
+
+
+
 
 
 
@@ -237,6 +244,65 @@ function get_allcity1(callback) {
     })
   );
 }
+
+function ham_timtengoivacxintheoid(callback) {
+  var array = [];
+
+  GET('http://localhost:8888/vacxin/get_all_goivacxin').then(res =>
+    res.json().then(data => {
+
+      var template = $('#service-table').html();
+      var compiled = Handlebars.compile(template);
+
+      var contextualHtml = compiled({ allservices: data });
+      $('#allservices').html(contextualHtml);
+      array = data;
+
+      return callback(array);
+    })
+  );
+}
+
+function ham_timtenkhachhangtheoid(id, callback) {
+  var array = [];
+
+  GET('http://localhost:8888/customer/get_customer/' + id).then(res =>
+    res.json().then(data => {
+
+      var template = $('#service-table').html();
+      var compiled = Handlebars.compile(template);
+
+      var contextualHtml = compiled({ allservices: data });
+      $('#allservices').html(contextualHtml);
+      array = data;
+
+      return callback(array);
+    })
+  );
+}
+
+function ham_getdetailbooking_duatren_madonhang(id, callback) {
+  var array = [];
+
+  GET('http://localhost:8888/booking/get_detail_booking/' + id).then(res =>
+    res.json().then(data => {
+
+      var template = $('#service-table').html();
+      var compiled = Handlebars.compile(template);
+
+      var contextualHtml = compiled({ allservices: data });
+      $('#allservices').html(contextualHtml);
+      array = data;
+
+      return callback(array);
+    })
+  );
+}
+
+
+
+
+
 
 
 
@@ -350,7 +416,7 @@ function list_view_cus(id_city, callback) {
   );
 }
 
-function list_view_cus1(id_city, callback) {
+/* function list_view_cus1(id_city, callback) {
   console.log(id_city);
   var array = [];
   GET('http://localhost:8888/booking/get_detail_booking/' + id_city).then(res =>
@@ -366,7 +432,7 @@ function list_view_cus1(id_city, callback) {
       return callback(array);
     })
   );
-}
+} */
 
 
 
@@ -419,9 +485,11 @@ function add_booking(ptthanhtoan, ttthanhtoan, ngaylapdon, phanloaidh, hoten, em
 
   }).then(res =>
     res.json().then(data => {
+      console.log("add thanh cong");
       console.log(data);
       localStorage.setItem("id_donhang", data.payload.id);
       console.log(data.payload.id);
+      list_view_cus2();
     })
   );
 }
